@@ -52,3 +52,10 @@
 
 6. **Configuração de CORS e Segurança:**
    - Implementação de configurações para acesso seguro e controlado à API.
+
+
+---
+
+### Sobre o Desenvolvedor
+
+Este projeto foi desenvolvido por [Gustavo Pereira Brum](https://www.linkedin.com/in/gustavo-pereira-brum-42671b241/) em conjunto com o Curso de Spring Boot Expert do Dougllas Sousa da Udemy,  estudante de Engenharia de Software, entusiasta de Java e apaixonado por desenvolvimento backend.
