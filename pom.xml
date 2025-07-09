@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.cursodsousa</groupId>
-	<artifactId>libraryapi</artifactId>
+	<artifactId>libraryapirestful</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>libraryapi</name>
 	<description>Demo project for Spring Boot</description>
