@@ -1,3 +1,5 @@
 ----------- LINK AULA DE APRESENTACAO MODULO -----------
 https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 
+----------- LINK Rest, HTTP e Requests -----------
+https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
