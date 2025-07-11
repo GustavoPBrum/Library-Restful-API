@@ -13,7 +13,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 
             Composicao Request -> https://whimsical.com/composicao-requests-6F4qqWjdNZ3LRmeFbhf2k1
         }
-
+        
         Responses (Respostas https://whimsical.com/responses-respostas-QFb395m2jVXX1PXKR96Sra) {
 
         }
