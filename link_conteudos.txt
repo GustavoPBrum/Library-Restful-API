@@ -8,8 +8,12 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
     https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication
 
     Rest {
-        Requests (Requisições) {
 
+        Requests (Requisições  https://whimsical.com/requests-requisicoes-U4daMN4v4sXaMAFSkLaL6Y) {
+
+            Composicao Request -> https://whimsical.com/composicao-requests-6F4qqWjdNZ3LRmeFbhf2k1
         }
+
+        
     }
 }
