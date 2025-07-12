@@ -66,6 +66,28 @@ Body:
    "errors: []
 }
 
+<<<<<<<<<<<<Visualizar Detalhes do Autor>>>>>>>>>>>>
+- Requisição
+URI: /autores/{ID}
+Método: GET
+
+
+- Respostas
+1. Sucesso
+
+Código: 200 - OK
+Body:
+{
+  "id": "uuid",
+  "nome": "string",
+  "dataNascimento": "date",
+  "nacionalidade": "string;
+}
+
+2. Erro
+
+Código: 404 - Not Found
+
 ----------- LINK Rest, HTTP e Requests -----------
 https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
 
