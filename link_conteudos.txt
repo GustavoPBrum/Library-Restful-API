@@ -25,6 +25,47 @@ Regras de Negócio
 Não permitir cadastrar um Autor com mesmo Nome, Data de Nascimento e Nacionalidade, ou seja, se houver 2 autores com mesmos Nome, Data de Nascimento e Nacionalidade serão considerados repetidos, não permitir.
 Não permitir excluir um Autor que possuir algum livro.
 
+Contrato API
+
+<<<<<<<<Cadastrar novo Autor>>>>>>>>>>>
+- Requisição
+URI: /autores
+Método: POST
+Body:
+{
+  "nome": "string",
+  "dataNascimento": "date",
+  "nacionalidade": "string;
+}
+
+- Resposta
+1. Sucesso
+
+Código: 201 - Created
+Header: Location - URI do recurso criado
+
+2. Erro de Validação
+
+Código: 422 - Unprocessable Entity
+Body:
+{
+   "status": 422,
+   "message": "Erro de Validação",
+   "errors: [
+      { "field": "nome", "error": "Nome é obrigatório" }
+    ]
+}
+
+3. Autor Duplicado
+
+Código: 409 - Conflict
+Body:
+{
+   "status": 409,
+   "message": "Registro Duplicado",
+   "errors: []
+}
+
 ----------- LINK Rest, HTTP e Requests -----------
 https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
 
