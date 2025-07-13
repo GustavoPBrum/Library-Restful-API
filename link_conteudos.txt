@@ -124,6 +124,45 @@ Body:
   "nacionalidade": "string;
 }]
 
+
+<<<<<<<<<<<<Atualizar Autor>>>>>>>>>>>>
+- Requisição
+URI: /autores/{ID}
+Método: PUT
+Body:
+{
+  "nome": "string",
+  "dataNascimento": "date",
+  "nacionalidade": "string;
+}
+
+- Resposta
+1. Sucesso
+
+Código: 204 - No Content
+
+2. Erro de Validação
+
+Código: 422 - Unprocessable Entity
+Body:
+{
+   "status": 422,
+   "message": "Erro de Validação",
+   "errors: [
+      { "field": "nome", "error": "Nome é obrigatório" }
+    ]
+}
+
+3. Autor Duplicado
+
+Código: 409 - Conflict
+Body:
+{
+   "status": 409,
+   "message": "Registro Duplicado",
+   "errors: []
+}
+
 2. Erro
 
 Código: 404 - Not Found
