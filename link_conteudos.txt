@@ -84,6 +84,27 @@ Body:
   "nacionalidade": "string;
 }
 
+<<<<<<<<<<<Excluir  Autor>>>>>>>>>>>
+- Requisição
+URI: /autores/{ID}
+Método: DELETE
+
+- Respostas
+1. Sucesso
+
+Código: 204 - No Content
+
+2. Erro
+
+Código: 400 - Bad Request
+
+Body:
+{
+   "status": 400,
+   "message": "Erro na exclusão: registro está sendo utilizado.",
+   "errors: []
+}
+
 2. Erro
 
 Código: 404 - Not Found
