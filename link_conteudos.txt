@@ -105,6 +105,25 @@ Body:
    "errors: []
 }
 
+<<<<<<<<<<<<Pesquisar Autores>>>>>>>>>>>>>
+- Requisição
+
+URI: /autores
+Query Params: nome, nacionalidade
+
+Método: GET
+- Respostas
+1. Sucesso
+
+Código: 200 - OK
+Body:
+[{
+  "id": "uuid",
+  "nome": "string",
+  "dataNascimento": "date",
+  "nacionalidade": "string;
+}]
+
 2. Erro
 
 Código: 404 - Not Found
