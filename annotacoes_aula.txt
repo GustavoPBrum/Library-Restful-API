@@ -1,0 +1,43 @@
+<------------- AULA 75 ------------->
+14:28
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+Host -> De onde esta partindo a requisicao.
+
+User-Agent -> Diz o cliente (FireFox, Chrome, Edge)
+
+18:51
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+Patch -> So atualiza o que foi passado!
+
+8:40
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+Header -> Serve para mandar metadados da requisicao.
+
+** Protocolos e Headers sao METADADOS.**
+
+Body -> Conteudo, recurso que vai ser enviado para o servidor.
+
+7:33
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+Rest eh a INTERFACE, OS PRINCIPIOS.
+
+RestFul eh o SISTEMA que utiliza desses principios RIGOROSAMENTE.
+
+6:59
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+RestFul, um sistema que utiliza corretamente os conceitos de Rest
+
+5:37
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+Rest nao eh uma tecnologia como HTTP, mas utiliza o HTTP como tecnologia. Define REGRAS para utilizar o protocolo HTTP
+
+4:58
+5. Desenvolvimento de API's Restful
+75. Entendendo tudo sobre Rest, HTTP e Requests
+HTTPS -> HTTP de forma segura, os dados/textos sao criptografados
