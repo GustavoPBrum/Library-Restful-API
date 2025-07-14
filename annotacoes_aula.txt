@@ -41,3 +41,28 @@ Rest nao eh uma tecnologia como HTTP, mas utiliza o HTTP como tecnologia. Define
 5. Desenvolvimento de API's Restful
 75. Entendendo tudo sobre Rest, HTTP e Requests
 HTTPS -> HTTP de forma segura, os dados/textos sao criptografados
+
+
+<------------- AULA 76 ------------->
+
+7:27
+5. Desenvolvimento de API's Restful
+76. Entendendo a composição de respostas do servidor
+401 Unauthorized - Lancado quando tenta se autenticar, mas o login e senha estao incorretos.
+
+403 Forbidden - Esta autenticado mas nao tem acesso aquele recurso.
+
+8:14
+5. Desenvolvimento de API's Restful
+76. Entendendo a composição de respostas do servidor
+405  Method Not Allowed - Servidor espera que para cadastrar um cliente seja um POST, e enviamos um GET.
+
+8:37
+5. Desenvolvimento de API's Restful
+76. Entendendo a composição de respostas do servidor
+409 Conflict - Ocorre quando tentamos cadastrar o mesmo cliente 2x
+
+9:16
+5. Desenvolvimento de API's Restful
+76. Entendendo a composição de respostas do servidor
+422 Unprocessable Entity - Serve para validacoes (CPF invalido, dados faltando nome...)
