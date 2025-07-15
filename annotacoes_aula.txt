@@ -1,26 +1,3 @@
-<------------- AULA 75 ------------->
-14:28
-5. Desenvolvimento de API's Restful
-75. Entendendo tudo sobre Rest, HTTP e Requests
-Host -> De onde esta partindo a requisicao.
-
-User-Agent -> Diz o cliente (FireFox, Chrome, Edge)
-
-18:51
-5. Desenvolvimento de API's Restful
-75. Entendendo tudo sobre Rest, HTTP e Requests
-Patch -> So atualiza o que foi passado!
-
-8:40
-5. Desenvolvimento de API's Restful
-75. Entendendo tudo sobre Rest, HTTP e Requests
-Header -> Serve para mandar metadados da requisicao.
-
-** Protocolos e Headers sao METADADOS.**
-
-Body -> Conteudo, recurso que vai ser enviado para o servidor.
-
-
 <------------- AULA 76 ------------->
 
 7:27
