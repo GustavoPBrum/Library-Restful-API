@@ -19,3 +19,8 @@ E para o caso de mais de um parametro:
 5. Desenvolvimento de API's Restful
 77. Aprenda a modelar contratos de APIs
 O que vem depois do '?' sao parametros que podemos passar, mas eles nao fazem parte da identificacao do recurso.
+
+18:46
+5. Desenvolvimento de API's Restful
+77. Aprenda a modelar contratos de APIs
+Na pesquisa nao pode retornar erro 404, pois nao esta atras de um recurso especifico, mas uma pesquisa.
