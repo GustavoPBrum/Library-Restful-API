@@ -1,10 +1,10 @@
 package io.github.cursodsousa.libraryapi.service;
 
-import io.spring.springdatajpa.libraryapi.model.Autor;
-import io.spring.springdatajpa.libraryapi.model.GeneroLivro;
-import io.spring.springdatajpa.libraryapi.model.Livro;
-import io.spring.springdatajpa.libraryapi.repository.AutorRepository;
-import io.spring.springdatajpa.libraryapi.repository.LivroRepository;
+import io.github.cursodsousa.libraryapi.model.Autor;
+import io.github.cursodsousa.libraryapi.model.GeneroLivro;
+import io.github.cursodsousa.libraryapi.model.Livro;
+import io.github.cursodsousa.libraryapi.repository.AutorRepository;
+import io.github.cursodsousa.libraryapi.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

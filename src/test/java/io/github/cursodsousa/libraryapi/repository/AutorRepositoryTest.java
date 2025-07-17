@@ -1,8 +1,8 @@
 package io.github.cursodsousa.libraryapi.repository;
 
-import io.spring.springdatajpa.libraryapi.model.Autor;
-import io.spring.springdatajpa.libraryapi.model.GeneroLivro;
-import io.spring.springdatajpa.libraryapi.model.Livro;
+import io.github.cursodsousa.libraryapi.model.Autor;
+import io.github.cursodsousa.libraryapi.model.GeneroLivro;
+import io.github.cursodsousa.libraryapi.model.Livro;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
