@@ -1,12 +1,8 @@
 <------------ AULA 77 ------------>
 6:55
-5. Desenvolvimento de API's Restful
-77. Aprenda a modelar contratos de APIs
 Alem dos recursos normais, pode existir subrecursos, recursos que dependem de um recurso principal.
 
 10:23
-5. Desenvolvimento de API's Restful
-77. Aprenda a modelar contratos de APIs
 Para usar parametro na URL:
 
 /clientes?nomeDoParametro=jose
@@ -16,8 +12,6 @@ E para o caso de mais de um parametro:
 /clientes?nomeDoParametro=jose&nomeDoOutroParametro=Mario
 
 10:48
-5. Desenvolvimento de API's Restful
-77. Aprenda a modelar contratos de APIs
 O que vem depois do '?' sao parametros que podemos passar, mas eles nao fazem parte da identificacao do recurso.
 
 18:46
