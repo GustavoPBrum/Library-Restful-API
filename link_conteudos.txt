@@ -26,7 +26,7 @@ Não permitir cadastrar um Autor com mesmo Nome, Data de Nascimento e Nacionalid
 Não permitir excluir um Autor que possuir algum livro.
 
 ----------- LINK Rest, HTTP e Requests -----------
-https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
+https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk  --->> COPIADO
 
 ----------- Protocolo/Autenticacao HTTP ----------- {
     https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication
