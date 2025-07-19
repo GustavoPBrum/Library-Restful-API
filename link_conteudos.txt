@@ -33,7 +33,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 
     Rest {
 
-        Requests (Requisições  https://whimsical.com/requests-requisicoes-U4daMN4v4sXaMAFSkLaL6Y) {
+        Requests (Requisições  https://whimsical.com/requests-requisicoes-U4daMN4v4sXaMAFSkLaL6Y) --->> COPIADO {
 
             Composicao Request -> https://whimsical.com/composicao-requests-6F4qqWjdNZ3LRmeFbhf2k1
         }
