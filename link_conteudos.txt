@@ -48,7 +48,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 
             Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA  --->> COPIADO
 
-            Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g
+            Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g   --->> COPIADO
 
             Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy
 
