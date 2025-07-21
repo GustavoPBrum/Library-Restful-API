@@ -50,7 +50,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 
             Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g   --->> COPIADO
 
-            Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy
+            Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy   --->> COPIADO
 
             Exercícios ->https://whimsical.com/exercicios-NVk4WdAcG4tbVYesFmJgEf
     }
