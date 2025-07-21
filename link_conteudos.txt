@@ -46,7 +46,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 
         Modelagem de Contratos de API’s (https://whimsical.com/modelagem-de-contratos-de-api-s-EZFdh4UCz6NvoJJw5x2pU4) {
 
-            Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA
+            Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA  --->> COPIADO
 
             Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g
 
