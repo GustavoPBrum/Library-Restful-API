@@ -2,7 +2,7 @@
 https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 
 ----------- LINK Rest, HTTP e Requests -----------
-https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk  --->> COPIADO
+https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
 
 ----------- Protocolo/Autenticacao HTTP ----------- {
 https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication
