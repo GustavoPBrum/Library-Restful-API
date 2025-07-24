@@ -9,8 +9,6 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
     Rest {
 
-        Composicao Request -> https://whimsical.com/composicao-requests-6F4qqWjdNZ3LRmeFbhf2k1
-
         Responses (Respostas https://whimsical.com/responses-respostas-QFb395m2jVXX1PXKR96Sra) --->> COPIADO {
 
 
