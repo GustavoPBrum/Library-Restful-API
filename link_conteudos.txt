@@ -9,7 +9,7 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
     Rest {
 
-        Requests (Requisições  https://whimsical.com/requests-requisicoes-U4daMN4v4sXaMAFSkLaL6Y) --->> COPIADO {
+        Requests (Requisições  https://whimsical.com/requests-requisicoes-U4daMN4v4sXaMAFSkLaL6Y) {
 
             Composicao Request -> https://whimsical.com/composicao-requests-6F4qqWjdNZ3LRmeFbhf2k1
         }
