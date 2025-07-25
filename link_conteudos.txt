@@ -8,11 +8,8 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Mozilla Documentation
 
     Rest {
-
-        Responses (Respostas https://whimsical.com/responses-respostas-QFb395m2jVXX1PXKR96Sra) {
-
-            Composicao Responses -> https://whimsical.com/composicao-responses-PJS8zTtkxCA2ivvm2ZYprc
-        }
+    
+        Composicao Responses -> https://whimsical.com/composicao-responses-PJS8zTtkxCA2ivvm2ZYprc
 
         Modelagem de Contratos de API’s (https://whimsical.com/modelagem-de-contratos-de-api-s-EZFdh4UCz6NvoJJw5x2pU4) {
 
