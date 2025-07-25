@@ -9,10 +9,9 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
     Rest {
 
-        Responses (Respostas https://whimsical.com/responses-respostas-QFb395m2jVXX1PXKR96Sra) --->> COPIADO {
+        Responses (Respostas https://whimsical.com/responses-respostas-QFb395m2jVXX1PXKR96Sra) {
 
-
-            Composicao Responses -> https://whimsical.com/composicao-responses-PJS8zTtkxCA2ivvm2ZYprc  --->> COPIADO
+            Composicao Responses -> https://whimsical.com/composicao-responses-PJS8zTtkxCA2ivvm2ZYprc
         }
 
         Modelagem de Contratos de API’s (https://whimsical.com/modelagem-de-contratos-de-api-s-EZFdh4UCz6NvoJJw5x2pU4) {
