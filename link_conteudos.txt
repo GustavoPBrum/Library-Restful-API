@@ -11,11 +11,11 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
         Modelagem de Contratos de API’s (https://whimsical.com/modelagem-de-contratos-de-api-s-EZFdh4UCz6NvoJJw5x2pU4) {
 
-            Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA  --->> COPIADO
+            Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA
 
-            Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g   --->> COPIADO
+            Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g
 
-            Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy   --->> COPIADO
+            Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy 
 
             Exercícios ->https://whimsical.com/exercicios-NVk4WdAcG4tbVYesFmJgEf
     }
