@@ -1,7 +1,7 @@
 ----------- LINK AULA DE APRESENTACAO CADASTRO DO AUTOR (REGRAS) -----------
 https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 
------------ LINK Rest, HTTP e Requests -----------
+----------- LINK Rest, HTTP, Requests e Response -----------
 https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sXTTk
 
 ----------- Protocolo/Autenticacao HTTP ----------- {
