@@ -7,6 +7,7 @@ https://whimsical.com/conceitos-e-modelagem-de-api-s-restful-Lux3uvEaxQB7o7Yd3sX
 ----------- Protocolo/Autenticacao HTTP ----------- {
 https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Mozilla Documentation
 
+    Rest {
 
-Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy
-
+        Exercícios ->https://whimsical.com/exercicios-NVk4WdAcG4tbVYesFmJgEf
+}
