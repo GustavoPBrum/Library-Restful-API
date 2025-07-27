@@ -9,8 +9,6 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
     Rest {
 
-        Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g
-
         Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy
 
         Exercícios ->https://whimsical.com/exercicios-NVk4WdAcG4tbVYesFmJgEf
