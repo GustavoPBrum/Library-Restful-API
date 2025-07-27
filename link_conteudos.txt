@@ -9,8 +9,6 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Authentication  ->> Moz
 
     Rest {
 
-        Identificação de Recursos -> https://whimsical.com/identificacao-de-recursos-7y2YBWBTEe9aGEopbUTGBA
-
         Método HTTP Apropriado -> https://whimsical.com/metodo-http-apropriado-G8pGSBZoen87vNfu7zno1g
 
         Código de Resposta apropriado -> https://whimsical.com/codigo-de-resposta-apropriado-XxDWKW5JnfXZmE7g62tAmy
