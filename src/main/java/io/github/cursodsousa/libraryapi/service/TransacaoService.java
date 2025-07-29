@@ -21,7 +21,7 @@ public class TransacaoService {
     @Autowired
     LivroRepository livroRepository;
 
-    @Transactional
+    @Transactional  
     public void salarLivroComFoto(){
         // salva o livro
         // repository.save(livro);
@@ -47,8 +47,8 @@ public class TransacaoService {
          livro.setDataPublicacao(LocalDate.of(2024, 9, 9));  // Ele commita esta alteracao no fim
     }
 
-    @Transactional  // Annotation necessaria para caso de erro durante a execucao, seja interrompida para nao ter ...
-    // ... dados inconsistentes
+    @Transactional  // Annotation necessaria para caso de erro durante a execucao (RuntimeException), caso seja ...
+    // ...  interrompida por ter dados inconsistentes, desfazendo a operacao total (Atomicidade -> tudo ou nada)
     public void executar(){
         // Salva o autor
         Autor autor =  new Autor();
