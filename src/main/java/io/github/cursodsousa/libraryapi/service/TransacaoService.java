@@ -21,7 +21,7 @@ public class TransacaoService {
     @Autowired
     LivroRepository livroRepository;
 
-    @Transactional  
+    @Transactional
     public void salarLivroComFoto(){
         // salva o livro
         // repository.save(livro);
@@ -37,7 +37,11 @@ public class TransacaoService {
         // livro.setNomeArquivoFoto(id + ".png");
     }
 
-    @Transactional
+    @Transactional  // Por estar dentro de uma transacao, ao receber o livro com *find*, estara no estado **Managed**,
+    // Ao final da transacao, Hibernate faz o dirty checking, dando um commit em tudo feito apos verificacoes.
+    // Caso nao estivesse dentro de uma transacao, precisaria chamar **SAVE()** EXPLICITAMENTE
+    // Por causa que o EntityManager nao estaria gerenciando o CICLO DE VIDA da ENTIDADE
+
     public void atualizacaoSemAtualizar(){
          var livro = livroRepository
                  .findById(UUID.fromString("5607768d-1c3d-49a2-b715-e547d092b831"))
