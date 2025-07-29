@@ -47,7 +47,8 @@ public class TransacaoService {
          livro.setDataPublicacao(LocalDate.of(2024, 9, 9));  // Ele commita esta alteracao no fim
     }
 
-    @Transactional
+    @Transactional  // Annotation necessaria para caso de erro durante a execucao, seja interrompida para nao ter ...
+    // ... dados inconsistentes
     public void executar(){
         // Salva o autor
         Autor autor =  new Autor();
