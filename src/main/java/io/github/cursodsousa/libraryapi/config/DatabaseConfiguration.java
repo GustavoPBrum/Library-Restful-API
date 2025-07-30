@@ -22,7 +22,11 @@ public class DatabaseConfiguration {
     @Value("${spring.datasource.driverClassName}")
     String driver;
 
-
+    /**
+     * Podemos fazer uma classe de configuracao que implementa um bloco inteiro do application.yml
+     * Alem de Para usa-la, temos que alem de @Configuration em cima da classe,
+     * Usamos @ConfigurationPropierties(prefix = "seu.caminho")
+     */
 
     //@Bean
     public DataSource dataSource(){
