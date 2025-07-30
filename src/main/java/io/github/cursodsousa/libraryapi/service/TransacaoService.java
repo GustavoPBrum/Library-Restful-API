@@ -37,11 +37,11 @@ public class TransacaoService {
         // livro.setNomeArquivoFoto(id + ".png");
     }
 
-    @Transactional  // Por estar dentro de uma transacao, ao receber o livro com *find*, estara no estado **Managed**,
+    // Por estar dentro de uma transacao, ao receber o livro com *find*, estara no estado **Managed**,
     // Ao final da transacao, Hibernate faz o dirty checking, dando um commit em tudo feito apos verificacoes.
     // Caso nao estivesse dentro de uma transacao, precisaria chamar **SAVE()** EXPLICITAMENTE
     // Por causa que o EntityManager nao estaria gerenciando o CICLO DE VIDA da ENTIDADE
-
+    @Transactional
     public void atualizacaoSemAtualizar(){
          var livro = livroRepository
                  .findById(UUID.fromString("5607768d-1c3d-49a2-b715-e547d092b831"))

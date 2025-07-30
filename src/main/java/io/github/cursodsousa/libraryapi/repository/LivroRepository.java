@@ -52,7 +52,7 @@ public interface LivroRepository  extends JpaRepository<Livro, UUID> {
     List<String> listarNomesDiferentesLivros();
 
     @Query("""
-            select l.genero 
+            select l.genero
             from Livro l
             join l.autor a
             where a.nacionalidade = 'Brasil'
