@@ -12,7 +12,8 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfiguration {
 
-    @Value("${spring.datasource.url}")
+    //Use @Value quando são poucas propriedades isoladas.
+    @Value("${spring.datasource.url}")  // Injecao individual das propriedades do application.yml
     String url;
     @Value("${spring.datasource.username}")
     String username;
@@ -20,6 +21,8 @@ public class DatabaseConfiguration {
     String password;
     @Value("${spring.datasource.driverClassName}")
     String driver;
+
+
 
     //@Bean
     public DataSource dataSource(){
