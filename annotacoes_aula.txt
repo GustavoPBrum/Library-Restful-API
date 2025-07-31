@@ -1,1 +1,16 @@
-<------------ AULA 80 ------------>
+<------------ AULA 81 ------------>
+
+criamos um service de Autor para persistir no BD as informacoes
+
+Injetamos o autorrepository para salvar e fizemos toda a op de persistencia em service
+
+Injetamos instancia de service no AutorControlller
+
+Em AutorDTO fizemos o metodo de mapeamento de DTO para entidade, ja que record permite metodo (apenas imutavel)
+
+Criamos um gerador de URL para nossa entidade para ser retornado no Header, que usa o DOMINIO e PATH, e que
+o entidade pega a URI gerada para si
+
+
+
+
