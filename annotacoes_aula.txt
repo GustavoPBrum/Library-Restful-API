@@ -1,3 +1,18 @@
 <------------ AULA 80 ------------>
+Nessa aula arrumei a conexao com o BD library
+
+Criamos o metodo Post no AutorController, assim como as duas formas de cria-lo
+
+Criamos um AutorDTO (Data Transfer Object), na nossa camada de entrada de dados para receber apenas os dados que precisamos,
+que sao no caso nome, dataNascimento e nacionalidade
 
 
+------------ SEPARAMOS CAMADA DE VIEW DA CAMADA DE PERSISTENCIA -------------------
+Usamos record para DTO por ser uma classe simples e IMUTAVEL (usado para pegar os dados preenchidos e criar a entidade
+Autor apartir do que recebermos no DTO)  --> Objeto que representa um JSON
+
+Indicamos que o DTO vai vir no Body da requisicao (RequestBody)
+
+ResponseEntity para resposta (classe que representa uma resposta)
+
+Testamos a conexao e testamos a requisicao no Postman, criamos um folder de Autores e testamos a request Post
