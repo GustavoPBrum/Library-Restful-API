@@ -1,5 +1,7 @@
 package io.github.cursodsousa.libraryapi.controller.dto;
 
+import io.github.cursodsousa.libraryapi.model.Autor;
+
 import java.time.LocalDate;
 
 // Data Transfer Object -> Objeto de transferencia de dados simples
@@ -9,4 +11,13 @@ import java.time.LocalDate;
 public record AutorDTO(String nome,
                        LocalDate dataNascimento,
                        String nacionalidade) { // Camada representacional, um objeto que REPRESENTA um JSON
+
+    // Podemos criar metodos para RECORD, apenas uma classe sem *SETS pros VALORES* (imutavel) apenas GETS
+    public Autor mapearParaAutor(){
+        Autor autor = new Autor();
+        autor.setNome(this.nome);
+        autor.setDataNascimento(this.dataNascimento);
+        autor.setNacionalidade(this.nacionalidade);
+        return autor;
+    }
 }
