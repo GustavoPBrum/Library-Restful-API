@@ -1,20 +1,3 @@
-<------------ AULA 77 ------------>
-6:55
-Alem dos recursos normais, pode existir subrecursos, recursos que dependem de um recurso principal.
+<------------ AULA 80 ------------>
 
-10:23
-Para usar parametro na URL:
 
-/clientes?nomeDoParametro=jose
-
-E para o caso de mais de um parametro:
-
-/clientes?nomeDoParametro=jose&nomeDoOutroParametro=Mario
-
-10:48
-O que vem depois do '?' sao parametros que podemos passar, mas eles nao fazem parte da identificacao do recurso.
-
-18:46
-5. Desenvolvimento de API's Restful
-77. Aprenda a modelar contratos de APIs
-Na pesquisa nao pode retornar erro 404, pois nao esta atras de um recurso especifico, mas uma pesquisa.

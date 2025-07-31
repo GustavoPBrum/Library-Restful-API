@@ -3,12 +3,13 @@ spring:
     name: libraryapi
   datasource:
     url: jdbc:postgresql://localhost:5432/library
-    username: post
-    password: post
-    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate.format_sql: true
+    open-in-view: false

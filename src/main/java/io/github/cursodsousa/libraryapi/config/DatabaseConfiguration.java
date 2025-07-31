@@ -19,7 +19,7 @@ public class DatabaseConfiguration {
     String username;
     @Value("${spring.datasource.password}")
     String password;
-    @Value("${spring.datasource.driverClassName}")
+    @Value("${spring.datasource.driver-class-name}")
     String driver;
 
     /**
@@ -40,7 +40,7 @@ public class DatabaseConfiguration {
         return ds;
     }
 
-    @Bean
+    //@Bean
     public DataSource hikariDataSource(){
         // Ja vem por padrao com Spring Data JPA
         HikariConfig config = new HikariConfig();
