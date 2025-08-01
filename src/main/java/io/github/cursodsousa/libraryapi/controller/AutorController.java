@@ -8,7 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.processing.Generated;
 import java.net.URI;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController  // Quando queremos transformar uma classe Spring em um controlador Rest
 @RequestMapping("/autores")  //http://localhost:8080/autores  --> URL que este Controller vai ficar escutando
@@ -35,5 +38,24 @@ public class AutorController {
 
         // Representa uma resposta
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("{id}")  // Optional pois pode existir ou nao
+    public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id){
+        var idAutor = UUID.fromString(id);
+        Optional<Autor> autorOptional = service.obterPorId(idAutor);  // Pegamos os dados do Autor Entidade
+
+        if(autorOptional.isPresent()){
+            Autor autor = autorOptional.get();  // Retorna o obj de dentro do Optional
+            AutorDTO dto = new AutorDTO(
+                    autor.getId(),
+                    autor.getNome(),
+                    autor.getDataNascimento(),
+                    autor.getNacionalidade());
+
+            // Retornamos um autorDTO
+            return ResponseEntity.ok(dto);
+        }
+        return ResponseEntity.notFound().build();
     }
 }
