@@ -29,8 +29,8 @@ public class AutorController {
         // Pega os dados da requisicao atual para criar nova URL, pois ela pega o DOMINIO e PATH da API
         URI location = ServletUriComponentsBuilder
                                 .fromCurrentRequest()  // Pega o caminho da request
-                                .path("/{id}")  // O que vai ser o path
-                                .buildAndExpand(autorEntidade.getId())  // A entidade pega a URI
+                                .path("/{id}")  // O que sera adicionado
+                                .buildAndExpand(autorEntidade.getId())  // A entidade pega a URI criada
                                 .toUri();
 
         // Representa uma resposta
