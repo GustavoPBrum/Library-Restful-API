@@ -1,2 +1,20 @@
-<------------ AULA 81 ------------>
+<------------ AULA 85 ------------>
+
+Criamos metodo responseEntity com filtro de pesquisa nome, nacionalidade no Controller com GetMapping sem parametro,
+usamos ResquestParam nos campos de pesquisa e com uso de 'value = ' por ser mais de um campo, assim como
+'required = false' por nao ser campos obrigatorios
+
+Criamos o metodo de pesquisa no service (que retorna uma lista de Autor(entidade)), para auxiliar na logica
+no AutorRespository criamos 3 Query Param para nome, nacionalidade e ambos
+
+No service apos fazer logica utilizando dos 3 Querys Param criados, caso deem false, retornamos toda a lista de
+autores
+
+No controller usamos o service para ter a pesquisa (que nos restornara uma lista de Autor) e tivemos de utilizar
+uma stream no qual usamos .map() para transformar os Autor Entidade em AutorDTO utilizando um construtor e apos isso
+transformar em uma lista de AutorDTO
+
+Depois de separar a camada representacional da logica de negocio, retornamos a lista de AutorDTO com validacao
+ResponseEntity.ok  --> nao possui resposta de erro para pesquisa
+
 
