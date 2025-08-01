@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +18,7 @@ import java.util.UUID;
 @Getter
 @Setter  // --> Em tempo de COMPILACAO sera gerado os GETTERS E SETTER dessa entidade
 @ToString(exclude = "livros")
+@EntityListeners(AuditingEntityListener.class) // Fica escutando toda vez que fizer op na entidade e olhar as annotations
 public class Autor {
 
     @Id
@@ -29,7 +34,7 @@ public class Autor {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(name = "nacionaldiade", length = 50, nullable = false)
+    @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
 
     // Se nao houver um construtor, automaticamente tera um construtor vazio
@@ -38,4 +43,16 @@ public class Autor {
     // Por padrao OneToMany eh Lazy
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Livro> livros;
+
+    // Guarda a data e hora diferentemente de LocalDate
+    @CreatedDate  // --> Ja persiste a data atual nesse campo
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
+
+    @LastModifiedDate
+    @Column(name = "data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
+    @Column(name = "id_usuario")
+    private UUID idUsuario;
 }
