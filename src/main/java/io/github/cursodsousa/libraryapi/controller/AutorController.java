@@ -10,8 +10,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.annotation.processing.Generated;
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController  // Quando queremos transformar uma classe Spring em um controlador Rest
 @RequestMapping("/autores")  //http://localhost:8080/autores  --> URL que este Controller vai ficar escutando
@@ -70,5 +72,24 @@ public class AutorController {
 
         service.deletar(autorOptional.get());
         return ResponseEntity.noContent().build();
+    }
+
+    // Sempre na entrada e saida de dados utilizando o DTO, pois faz parte da camada representacional
+    @GetMapping
+    public ResponseEntity<List<AutorDTO>> pesquisa(
+            // O uso do value eh por ter mais de um parametro, required por causa que nao sao obrigatorios
+            @RequestParam(value = "nome", required = false) String nome,
+            @RequestParam(value = "nacionalidade", required = false) String nacionalidade) {
+
+        List<Autor> pesquisa = service.pesquisa(nome, nacionalidade);
+        List<AutorDTO> lista = pesquisa
+                .stream()
+                .map(autor -> new AutorDTO(
+                        autor.getId(),
+                        autor.getNome(),
+                        autor.getDataNascimento(),
+                        autor.getNacionalidade()))
+                .collect(Collectors.toList());  // Colleta a stream de autorDTO e transforma em list
+        return ResponseEntity.ok(lista);
     }
 }
