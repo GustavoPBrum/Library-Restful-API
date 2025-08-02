@@ -84,7 +84,7 @@ public class AutorController {
     // Sempre na entrada e saida de dados utilizando o DTO, pois faz parte da camada representacional
     @GetMapping
     public ResponseEntity<List<AutorDTO>> pesquisa(
-            // O uso do value eh por ter mais de um parametro, required por causa que nao sao obrigatorios
+            // // Caso queira nomes diferentes na URL, usar value = "...", required por causa que nao sao obrigatorios
             @RequestParam(value = "nome", required = false) String nome,
             @RequestParam(value = "nacionalidade", required = false) String nacionalidade) {
 
