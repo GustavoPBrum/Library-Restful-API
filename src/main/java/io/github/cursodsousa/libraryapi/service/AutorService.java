@@ -2,6 +2,7 @@ package io.github.cursodsousa.libraryapi.service;
 
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.repository.AutorRepository;
+import io.github.cursodsousa.libraryapi.validator.AutorValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,12 +14,16 @@ public class AutorService {
 
     private final AutorRepository repository;
 
+    private final AutorValidator validator;
+
     // Se colocar um Bean gerenciado no construtor, o Spring vai injetar automaticamente
-    public AutorService(AutorRepository repository) {
+    public AutorService(AutorRepository repository, AutorValidator validator) {
         this.repository = repository;
+        this.validator = validator;
     }
 
     public Autor salvar(Autor autor){
+        validator.validar(autor);
         return repository.save(autor);
     }
 
@@ -26,6 +31,7 @@ public class AutorService {
         if(autor.getId() == null) {
             throw new IllegalArgumentException("Para atualizar, e necessario que o autor ja esteja salvo.");
         }
+        validator.validar(autor);
         repository.save(autor);
     }
 

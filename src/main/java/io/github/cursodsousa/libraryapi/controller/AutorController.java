@@ -1,6 +1,8 @@
 package io.github.cursodsousa.libraryapi.controller;
 
 import io.github.cursodsousa.libraryapi.controller.dto.AutorDTO;
+import io.github.cursodsousa.libraryapi.controller.dto.ErroResposta;
+import io.github.cursodsousa.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.service.AutorService;
 import org.springframework.http.HttpStatus;
@@ -27,19 +29,24 @@ public class AutorController {
 
     //@RequestMapping(method = RequestMethod.POST)  // Ou desta forma com mais parametros
     @PostMapping
-    public ResponseEntity<Void> salvar(@RequestBody AutorDTO autorDTO) {  // Indica que este objeto vai vir no corpo da request
-        Autor autorEntidade = autorDTO.mapearParaAutor();
-        service.salvar(autorEntidade);
+    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autorDTO) {  // Indica que este objeto vai vir no corpo da request
+        try {
+            Autor autorEntidade = autorDTO.mapearParaAutor();
+            service.salvar(autorEntidade);
 
-        // Pega os dados da requisicao atual para criar nova URL, pois ela pega o DOMINIO e PATH da API
-        URI location = ServletUriComponentsBuilder
-                                .fromCurrentRequest()  // Pega o caminho da request
-                                .path("/{id}")  // O que sera adicionado
-                                .buildAndExpand(autorEntidade.getId())  // A entidade pega a URI criada
-                                .toUri();
+            // Pega os dados da requisicao atual para criar nova URL, pois ela pega o DOMINIO e PATH da API
+            URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()  // Pega o caminho da request
+                    .path("/{id}")  // O que sera adicionado
+                    .buildAndExpand(autorEntidade.getId())  // A entidade pega a URI criada
+                    .toUri();
 
-        // Representa uma resposta
-        return ResponseEntity.created(location).build();
+            // Representa uma resposta
+            return ResponseEntity.created(location).build();
+        }catch (RegistroDuplicadoException e) {
+            var erroDTO = ErroResposta.conflito(e.getMessage());
+            return ResponseEntity.status(erroDTO.status()).body(erroDTO);
+        }
     }
 
     @GetMapping("{id}")  // Optional pois pode existir ou nao
