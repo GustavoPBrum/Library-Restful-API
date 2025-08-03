@@ -114,7 +114,7 @@ public class AutorRepositoryTest {
     @Test
     //@Transactional
     void listarLivrosAutor() {  // Melhor forma de carregar os dados de uma Entidade lazy *SEMPRE USAR LAZY*
-        var id = UUID.fromString("71bb2451-6b77-437c-b4bd-d61a9bb20476");
+        var id = UUID.fromString("3ec3a840-839c-4e70-9775-8e90e17b4bbb");
         var autor = repository.findById(id).get();
 
         // Buscar os livros do autor

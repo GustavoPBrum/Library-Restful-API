@@ -41,7 +41,8 @@ public class Autor {
 
     // mappedBy diz que nao eh uma coluna e sim apenas um mapeamento OneToMany
     // Por padrao OneToMany eh Lazy
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "autor", //cascade = CascadeType.ALL
+             fetch = FetchType.LAZY)
     private List<Livro> livros;
 
     // Guarda a data e hora diferentemente de LocalDate

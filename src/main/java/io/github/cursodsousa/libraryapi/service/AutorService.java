@@ -1,7 +1,9 @@
 package io.github.cursodsousa.libraryapi.service;
 
+import io.github.cursodsousa.libraryapi.exceptions.OperacaoNaoPermitidaException;
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.repository.AutorRepository;
+import io.github.cursodsousa.libraryapi.repository.LivroRepository;
 import io.github.cursodsousa.libraryapi.validator.AutorValidator;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,13 @@ public class AutorService {
 
     private final AutorValidator validator;
 
+    private final LivroRepository livroRepository;  // Final quer dizer que quer inicializar no construtor
+
     // Se colocar um Bean gerenciado no construtor, o Spring vai injetar automaticamente
-    public AutorService(AutorRepository repository, AutorValidator validator) {
+    public AutorService(AutorRepository repository, AutorValidator validator, LivroRepository livroRepository) {
         this.repository = repository;
         this.validator = validator;
+        this.livroRepository = livroRepository;
     }
 
     public Autor salvar(Autor autor){
@@ -40,6 +45,10 @@ public class AutorService {
     }
 
     public void deletar(Autor autor) {
+        if(possuiLivro(autor)){
+            throw new OperacaoNaoPermitidaException(
+                    "Nao eh permitido excluir um Autor que possui livro(s) cadastrado(s)!!!");
+        }
         repository.delete(autor);
     }
 
@@ -57,5 +66,9 @@ public class AutorService {
         }
 
         return repository.findAll();
+    }
+
+    public boolean possuiLivro(Autor autor){
+        return livroRepository.existsByAutor(autor);
     }
 }

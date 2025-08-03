@@ -2,6 +2,7 @@ package io.github.cursodsousa.libraryapi.controller;
 
 import io.github.cursodsousa.libraryapi.controller.dto.AutorDTO;
 import io.github.cursodsousa.libraryapi.controller.dto.ErroResposta;
+import io.github.cursodsousa.libraryapi.exceptions.OperacaoNaoPermitidaException;
 import io.github.cursodsousa.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.service.AutorService;
@@ -69,16 +70,21 @@ public class AutorController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deletar(@PathVariable("id") String id) {
-        var idAutor = UUID.fromString(id);
-        Optional<Autor> autorOptional = service.obterPorId(idAutor);
+    public ResponseEntity<Object> deletar(@PathVariable("id") String id) {
+        try {
+            var idAutor = UUID.fromString(id);
+            Optional<Autor> autorOptional = service.obterPorId(idAutor);
 
-        if(autorOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
+            if (autorOptional.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            service.deletar(autorOptional.get());
+            return ResponseEntity.noContent().build();
+        } catch (OperacaoNaoPermitidaException e) {
+            var erroReposta = ErroResposta.respostaPadrao(e.getMessage());
+            return ResponseEntity.status(erroReposta.status()).body(erroReposta);
         }
-
-        service.deletar(autorOptional.get());
-        return ResponseEntity.noContent().build();
     }
 
     // Sempre na entrada e saida de dados utilizando o DTO, pois faz parte da camada representacional
@@ -101,24 +107,30 @@ public class AutorController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> atualizar(
+    public ResponseEntity<Object> atualizar(
             @PathVariable("id") String id,
             @RequestBody AutorDTO autorDTO) { // Transforma o JSON que veio no Body no autorDTO
 
-        var idAutor = UUID.fromString(id);
-        Optional<Autor> autorOptional = service.obterPorId(idAutor);
+        try {
 
-        if(autorOptional.isEmpty()){
-            return ResponseEntity.notFound().build();
+            var idAutor = UUID.fromString(id);
+            Optional<Autor> autorOptional = service.obterPorId(idAutor);
+
+            if (autorOptional.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            var autor = autorOptional.get();
+            autor.setNome(autorDTO.nome());
+            autor.setNacionalidade(autorDTO.nacionalidade());
+            autor.setDataNascimento(autorDTO.dataNascimento());
+
+            service.atualizar(autor);
+
+            return ResponseEntity.noContent().build();
+        } catch (RegistroDuplicadoException e) {
+            var erroDTO = ErroResposta.conflito(e.getMessage());
+            return ResponseEntity.status(erroDTO.status()).body(erroDTO);
         }
-
-        var autor = autorOptional.get();
-        autor.setNome(autorDTO.nome());
-        autor.setNacionalidade(autorDTO.nacionalidade());
-        autor.setDataNascimento(autorDTO.dataNascimento());
-
-        service.atualizar(autor);
-
-        return ResponseEntity.noContent().build();
     }
 }

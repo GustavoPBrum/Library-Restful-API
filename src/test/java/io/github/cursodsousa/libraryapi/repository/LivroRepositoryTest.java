@@ -23,6 +23,8 @@ class LivroRepositoryTest {  // Nao ha necessidade de Test ser publico
     AutorRepository autorRepository;
 
     @Test
+    //@Transactional  --> Ele abriria uma transacao e o insert seria posto numa pilha e nem apareceria no console
+    // por causa do rollback no fim do teste
     void salvarTest() {
         Livro livro = new Livro();
         livro.setIsbn("21312-25324");
@@ -32,8 +34,8 @@ class LivroRepositoryTest {  // Nao ha necessidade de Test ser publico
         livro.setDataPublicacao(LocalDate.of(1950, 1, 21));
 
         // Busca um autor ja salvo para salvar posteriormente com livro
-        Autor autor = autorRepository.findById(UUID.fromString("55e59feb-ef27-4bf7-8b9c-ffb95233fc33")).orElse((null));
-        ///livro.setAutor(autor);
+        Autor autor = autorRepository.findById(UUID.fromString("3ec3a840-839c-4e70-9775-8e90e17b4bbb")).orElse((null));
+        livro.setAutor(autor);
 
         repository.save(livro);
     }
