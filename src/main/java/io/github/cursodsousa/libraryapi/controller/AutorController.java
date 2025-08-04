@@ -6,6 +6,7 @@ import io.github.cursodsousa.libraryapi.exceptions.OperacaoNaoPermitidaException
 import io.github.cursodsousa.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.service.AutorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,8 @@ public class AutorController {
     private final AutorService service;
 
     //@RequestMapping(method = RequestMethod.POST)  // Ou desta forma com mais parametros
-    @PostMapping
-    public ResponseEntity<Object> salvar(@RequestBody AutorDTO autorDTO) {  // Indica que este objeto vai vir no corpo da request
+    @PostMapping                        // Indica que este objeto vai vir no corpo da request
+    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO autorDTO) {  // Valid ja faz a validacao no comeco
         try {
             Autor autorEntidade = autorDTO.mapearParaAutor();
             service.salvar(autorEntidade);

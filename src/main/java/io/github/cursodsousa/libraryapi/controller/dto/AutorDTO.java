@@ -1,6 +1,8 @@
 package io.github.cursodsousa.libraryapi.controller.dto;
 
 import io.github.cursodsousa.libraryapi.model.Autor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -10,8 +12,11 @@ import java.util.UUID;
 
 // SERVE PARA SEPARAR NOSSA CAMADA DE VIEW (input) DA CAMADA DE PERSISTENCIA (entidade com mais dados)
 public record AutorDTO(UUID ID,
+                       @NotBlank(message = "Campo obrigatorio")  // --> NotNull para String, nao permite nula e nem vazia
                        String nome,
+                       @NotNull(message = "Campo obrigatorio")  // --> campos que podem vir nulo
                        LocalDate dataNascimento,
+                       @NotBlank(message = "Campo obrigatorio")
                        String nacionalidade
 ) { // Camada representacional, um objeto que REPRESENTA um JSON
 
