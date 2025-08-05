@@ -6,6 +6,8 @@ import io.github.cursodsousa.libraryapi.repository.AutorRepository;
 import io.github.cursodsousa.libraryapi.repository.LivroRepository;
 import io.github.cursodsousa.libraryapi.validator.AutorValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -60,6 +62,24 @@ public class AutorService {
         }
 
         return repository.findAll();
+    }
+
+    public List<Autor> pesquisaByExample(String nome, String nacionalidade) {
+        var autor = new Autor();
+        autor.setNome(nome);
+        autor.setNacionalidade(nacionalidade);
+
+        ExampleMatcher matcher = ExampleMatcher
+                .matching()
+                .withIgnoreNullValues() // Ignora valores nulos
+                .withIgnorePaths("id", "dataNascimento", "dataCadastro")
+                .withIgnoreCase()  // Ignora maiusculas/minusculas
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);  // Contem uma parte do texto
+
+        // Example precisa de um objeto (nao trabalha so com paramtetros)
+        Example<Autor> autorExample = Example.of(autor, matcher);
+
+        return repository.findAll(autorExample);  // Example passadoz como parametro
     }
 
     public boolean possuiLivro(Autor autor){
