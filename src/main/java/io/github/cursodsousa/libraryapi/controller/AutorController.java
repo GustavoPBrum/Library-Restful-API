@@ -108,7 +108,7 @@ public class AutorController {
     @PutMapping("{id}")
     public ResponseEntity<Object> atualizar(
             @PathVariable("id") String id,
-            @RequestBody AutorDTO autorDTO) { // Transforma o JSON que veio no Body no autorDTO
+            @RequestBody @Valid AutorDTO autorDTO) { // Transforma o JSON que veio no Body no autorDTO
 
         try {
 
