@@ -1,18 +1,2 @@
-<------------ AULA 92 ------------>
+<------------ AULA  ------------>
 
-Implementamos a regra de integridade dos campos obrigatorios
-
-Adicionamos no pom o starter Validation
-
-Fizemos a validacao no AutorDTO(pois eh a entrada de dados que recebemos)
-
-Dentro do AutorDTO adicionamos Annotation de Validacao nos 3 campos (nome, data nascimento e nacionalidade)
-
-Usamos de Annotation @NotBlank(para String, nao permitindo nula e nem vazia) e @NotNull, tambem temos a opcao de
-colocar uma mensagem (padrao para os 3)
-
-Agora no Controller, utilizamos tbm nos dados que vierao na @RequestBody, usando o @Valid para fazer a validacao na
-entrada e se nao atender aos requisitos, nao sera permitido nem ser salvo
-
-Proxima aula implementarei um HANDLER para capturar a exception e transformar no objeto erroResposta.
-No caso capturar os erros de validacao vindos da validacao feita e retornar o ErroResposta
