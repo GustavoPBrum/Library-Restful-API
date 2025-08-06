@@ -1,24 +1,7 @@
-<------------ AULA 95 ------------>
+---------- Contrato API Autor ----------
+https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 
-Apos mostrar como criar um handlerException global para qualquer excecao de um tipo especifico, aprendi sobre os
-diferentes tipos de validacao existentes (@Size, @Past).
+---------- Contrato API Livros ----------
+https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-Example --> pega os dados preenchidos e os utiliza na Query
-
-Example tambem precisa de um objeto, ele nao trabalha somente com parametros e sim com objeto de exemplo
-
-Example.of(autor); --> desta forma cria apenas o Example basico, sem ExampleMatcher ele apareceria as pesquisas apenas
-pelo nome/nacionalidade exatamente como veio na pesquisa
-
-Example<Autor> autorExample = Example.of(autor, matcher);  --> Forma avancado com ExampleMatcher, pesquisa o que possuir
-seja nome e/ou nacionalidade
-
-Depois passamos a lista como parametro de pesquisa no BD.
-
-Mudamos o metodo no service para pesquisaByExample para assim fazer o teste com as requisicoes pelo postman
-
-Obs: por ignorar case, ele deixa tudo em caixa baixa para comparar e por causa do Containing, ele utiliza o 'like' no
-BD
-
-Podemos tambem ignorar os campos indesejados com withIgnorePaths (caso fosse passsado o Autor(entidade)) e quisessemos
-apenas campos especificos
+<------------ AULA  ------------>
