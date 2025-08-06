@@ -3,9 +3,13 @@ package io.github.cursodsousa.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -15,6 +19,7 @@ import java.util.UUID;
 //@AllArgsConstructor --> construtor com todos argumentos
 //@RequiredArgsConstructor --> construtor com as propriedades final
 @ToString(exclude = "autor")  // Loop infinito, imprimia o toString do autor, o autor imprimia o proprio toString, que chamava o livro de novo7...
+@EntityListeners(AuditingEntityListener.class)  // Escuta toda vez que fizer op na entidade e olhar as annotations
 public class Livro {
 
     @Id
@@ -44,4 +49,15 @@ public class Livro {
             fetch = FetchType.LAZY)  // Em relacionamento ...ToOne, nao vai trazer os dados do autor (neste caso), apenas do livro
     @JoinColumn(name = "id_autor")
     private Autor autor;
+
+    @CreatedDate  // --> Ja persiste a data atual nesse campo
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
+
+    @LastModifiedDate
+    @Column(name = "data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
+    @Column(name = "id_usuario")
+    private UUID idUsuario;
 }
