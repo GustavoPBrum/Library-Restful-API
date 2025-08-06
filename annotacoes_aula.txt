@@ -4,4 +4,20 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA  ------------>
+<------------ AULA 97 ------------>
+
+Mudamos o isbn da tabela de livro para unique (nao pode ser duplicado) e assim dropamos a tabela atual e criamos uma
+nova com a att.
+
+Mapeamos o dataCadastro do livro, dataAtualizacao, idUsuario (reaproveitados do Autor). Tambem para funcionar a
+AUDITORIA, add a annotation em cima da classe EntityListeners(AuditingEntityListener.class) que no qual vai ficar
+escutando qualquer op das Annotation responsavek pelos 3 citados anteriormente.
+
+Criei a camada Service com @Service e @RequiredArgsConstrutor para att do construtor em tempo de comp para propriedades
+final. Tambem injetei o LivroRepository.
+
+Criado tambem LivroController, com @RestController, @RequestMapping para '/livros' e @RequiredArgsConstrutor com
+LivroService injetado
+
+Criado 2 DTOs distintos. CadastroLivroDTO e ResultadoPesquisaLivroDTO, passado os parametros de consulta exigidos no
+contrato da API, por ser na camada REPRESENTACIONAL, daremos o AutorDTO como resposta.
