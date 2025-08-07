@@ -2,6 +2,7 @@ package io.github.cursodsousa.libraryapi.controller;
 
 import io.github.cursodsousa.libraryapi.controller.dto.AutorDTO;
 import io.github.cursodsousa.libraryapi.controller.dto.ErroResposta;
+import io.github.cursodsousa.libraryapi.controller.mappers.AutorMapper;
 import io.github.cursodsousa.libraryapi.exceptions.OperacaoNaoPermitidaException;
 import io.github.cursodsousa.libraryapi.exceptions.RegistroDuplicadoException;
 import io.github.cursodsousa.libraryapi.model.Autor;
@@ -27,18 +28,20 @@ public class AutorController {
 
     private final AutorService service;
 
+    private final AutorMapper mapper;
+
     //@RequestMapping(method = RequestMethod.POST)  // Ou desta forma com mais parametros
     @PostMapping                        // Indica que este objeto vai vir no corpo da request
-    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO autorDTO) {  // Valid ja faz a validacao no comeco
+    public ResponseEntity<Object> salvar(@RequestBody @Valid AutorDTO dto) {  // Valid ja faz a validacao no comeco
         try {
-            Autor autorEntidade = autorDTO.mapearParaAutor();
-            service.salvar(autorEntidade);
+            Autor autor = mapper.toEntity(dto);
+            service.salvar(autor);
 
             // Pega os dados da requisicao atual para criar nova URL, pois ela pega o DOMINIO e PATH da API
             URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest()  // Pega o caminho da request
                     .path("/{id}")  // O que sera adicionado
-                    .buildAndExpand(autorEntidade.getId())  // A entidade pega a URI criada
+                    .buildAndExpand(autor.getId())  // A entidade pega a URI criada
                     .toUri();
 
             // Representa uma resposta
@@ -52,20 +55,14 @@ public class AutorController {
     @GetMapping("{id}")  // Optional pois pode existir ou nao
     public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id){
         var idAutor = UUID.fromString(id);
-        Optional<Autor> autorOptional = service.obterPorId(idAutor);  // Pegamos os dados do Autor Entidade
 
-        if(autorOptional.isPresent()){
-            Autor autor = autorOptional.get();  // Retorna o obj de dentro do Optional
-            AutorDTO dto = new AutorDTO(
-                    autor.getId(),
-                    autor.getNome(),
-                    autor.getDataNascimento(),
-                    autor.getNacionalidade());
-
-            // Retornamos um autorDTO
-            return ResponseEntity.ok(dto);
-        }
-        return ResponseEntity.notFound().build();
+        return service
+                .obterPorId(idAutor)
+                .map(autor -> {
+                 AutorDTO dto = mapper.toDTO(autor);
+                 return ResponseEntity.ok(dto);
+                })
+                .orElseGet( () -> ResponseEntity.notFound().build());  // Retorna a func sem parametro
     }
 
     @DeleteMapping("{id}")
@@ -96,12 +93,9 @@ public class AutorController {
         List<Autor> pesquisa = service.pesquisaByExample(nome, nacionalidade);
         List<AutorDTO> lista = pesquisa
                 .stream()
-                .map(autor -> new AutorDTO(
-                        autor.getId(),
-                        autor.getNome(),
-                        autor.getDataNascimento(),
-                        autor.getNacionalidade()))
-                .collect(Collectors.toList());  // Colleta a stream de autorDTO e transforma em list
+                // Pode usar dessa forma pois o parametro de ambos sao iguais. Entra autor/dto sai
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
         return ResponseEntity.ok(lista);
     }
 
