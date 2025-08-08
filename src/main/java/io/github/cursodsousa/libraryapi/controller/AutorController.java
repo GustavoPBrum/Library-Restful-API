@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RestController  // Quando queremos transformar uma classe Spring em um controlador Rest
 @RequestMapping("/autores")  //http://localhost:8080/autores  --> URL que este Controller vai ficar escutando
 @RequiredArgsConstructor
-public class AutorController {
+public class AutorController implements GenericController {
 
     private final AutorService service;
 
@@ -38,11 +38,7 @@ public class AutorController {
             service.salvar(autor);
 
             // Pega os dados da requisicao atual para criar nova URL, pois ela pega o DOMINIO e PATH da API
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()  // Pega o caminho da request
-                    .path("/{id}")  // O que sera adicionado
-                    .buildAndExpand(autor.getId())  // A entidade pega a URI criada
-                    .toUri();
+            URI location = gerarHeaderLocation(autor.getId());
 
             // Representa uma resposta
             return ResponseEntity.created(location).build();

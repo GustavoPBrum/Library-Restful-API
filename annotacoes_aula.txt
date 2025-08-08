@@ -4,28 +4,6 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA 101 ------------>
-
-Mapeamos o cadastro de livro, criando uma nova INTERFACE chamado LivroMapper
-
-Vendo diferencas do Livro para CadastroLivroDTO, notamos que no DTO temos apenas o idAutor enquanto na entidade
-Livro, temos o obj autor.
-
-Precisando pegar esse idAutor e retornar o obj necessario para cadastro (tendo que ir no BD para realizar tal op).
-
-Para fazer injecao de dependencia e por uma propriedade no LivroMapper, trocamos de interface para classe ABSTRATA.
-E deixando o metodo para **public abstract Livro toEntity(CadastroLivroDTO);**
-
-E na annotation @Mapping pode-se utilizar expressoes como:
-@Mapping(expression = "java( repository.findById(dto.idAutor()).orElse(null) )")
-Pode retornar o Objeto (que esta dentro do Optional<>) encontrado ou nulo
-
-Injeta LivroMapper em Service, mapea para entidade do DTO, salva a entidade e retorna a entidade (para teste)
-
-BugFix: estava dando erro pois generoLivro estava indo nulo na hora do Mapper mapear para entidade e lancava exception
-no console, mas bastou apenas dar um clean/install no Maven que forcou a reconstrucao completa do MapStruct
-
-Apos resolvido e retornado a entidade na response deu cascata pois mostrava autor, que mostrava o livro, que mostrava
-autor... Sera resolvido quando retornarmos o DTO e nao a entidade
+<------------ AULA  ------------>
 
 
