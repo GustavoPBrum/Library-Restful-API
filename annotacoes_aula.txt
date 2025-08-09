@@ -4,6 +4,15 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA  ------------>
+<------------ AULA 105 ------------>
 
+Criamos o metodo deletar no Livro Service, apos isso, comecamos o mapeamento para requisicao de Delete no controller
 
+Chamamos o metodo service com o metodo criado, passando .map do livro encontrado, sua ResponseEntity caso encontre o
+livro, e a resposta para caso nao encontre
+
+Testamos com a exclusao do do livro Teste 1
+
+Bugfix: esqueci de adicional no mapeamento da requisicao ("/{id}") e nao estava encontrando a request, mas corrigido
+
+Fizemos a exclusao do livro e testamos possiveis caminho (noContent e notFound)
