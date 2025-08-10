@@ -5,6 +5,7 @@ import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.model.GeneroLivro;
 import io.github.cursodsousa.libraryapi.model.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,7 +19,8 @@ import java.util.UUID;
 /**
  *  @see Livro
  */
-public interface LivroRepository  extends JpaRepository<Livro, UUID> {
+// JpaSpecificationExecutor --> Orientado a OBJ, nao necessitando escrever codigo SQL (igual a Example)
+public interface LivroRepository  extends JpaRepository<Livro, UUID>, JpaSpecificationExecutor<Livro> {
 
     // Query method  --> declaracao de method
     // Apenas definimos e o JPA ira implementar para nos em tempo de execucao
