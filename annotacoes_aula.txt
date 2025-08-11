@@ -4,36 +4,7 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA 107 ------------>
-
-Specification nada mais eh do que uma INTERFACE FUNCIONAL
-
-ROOT = projecao, query = representa o obj query e cb (criteriaBuilder) = builder que possui os criterios
-
-Primeiro param de comparacao(root.get("...")) = root --> atb da entidade livro a ser comparado
-
-Segundo param (..., parametroMetodo) = query --> parametro de comparacao
-
-Apos ver como passar uma especificacao de um determinado obj, criamos um pacote de Specifications chamada Specs e para
-cada classe criada, coloca os Specifications de uma entidade
-
-Usamos essa linha de codigo para desconsiderar caixa alta ou nao,
- return (root, query, criteriaBuilder) -> criteriaBuilder
- .like(criteriaBuilder.upper(root.get("titulo")),  "%" + titulo.toUpperCase() + "%");
-
- Coloca em caixa alta o que esta no BD e compara com o parametro do metodo. Ja os % quer dizer que queremos que seja
- comparado em qualquer lugar do espaco do titulo de um livro
-
-root.get -> TEM QUE SE USAR NOME DA PROPRIEDADE(obj) E NAO DO CAMPO NO BD
-
-// Conjunction -> nada mais eh do que o criterio verdadeiro
-        Specification<Livro> specs = Specification.where((root, query, cb) -> cb.conjunction());
-
-Apos isso usamos os if's para verificar os campos preenchidos, e por a SPEC ser IMUTAVEL, colocamos ela para receber
-ela mesma com 'and'
-
-Por fim importamos os metodos como forma statica, importando a classe LivroSpec com seus metodos
-import static io.github.cursodsousa.libraryapi.repository.specs.LivroSpecs.*; --> Nao precisa chamar a entidade para
-usar seu metodo!
+<------------ AULA  ------------>
 
 Das Specs de LivroSpecs, ficou a faltar a Spec de nomeAutor e anoPublicacao.
+

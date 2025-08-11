@@ -7,20 +7,20 @@ import org.springframework.data.jpa.domain.Specification;
 public class LivroSpecs {
 
     // Specification nada mais eh do que uma interface FUNCIONAL
-    // root = dados que queremos
-    // query = obj criteria query
-    // cb = criteria builder
+    // root = projecao (o que queremos da query, os dados que queremos)
+    // query = obj query
+    // cb = criteria builder (que vai possuir os criterios)
 
     public static Specification<Livro> isbnEqual(String isbn){
+        // root.get("") --> campo que queremos comparar , objeto de comparacao
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("isbn"), isbn);
     }
 
     public static Specification<Livro> tituloLike(String titulo) {
-        // Compara o meu titulo na no banco em caixa alta
-        return (root, query, criteriaBuilder) ->
-                // Vai selecionar contendo qualquer parte da String
-                criteriaBuilder.like(criteriaBuilder.upper(root.get("titulo")),  "%" +
-                titulo.toUpperCase() + "%");  // Compara com o titulo do param em caixa alta
+        return (root, query, cb) ->
+                // Vai comparar o campo do obj "titulo" em caixa alta...
+                cb.like(cb.upper(root.get("titulo")),"%" +  // % entre o param para pesquisar em qualquer lugar
+                titulo.toUpperCase() + "%");  // ...Com o param tbm em CAIXA ALTA
     }
 
     public static Specification<Livro> generoEqual(GeneroLivro genero) {

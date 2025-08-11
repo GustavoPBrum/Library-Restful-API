@@ -3,7 +3,6 @@ package io.github.cursodsousa.libraryapi.service;
 import io.github.cursodsousa.libraryapi.model.GeneroLivro;
 import io.github.cursodsousa.libraryapi.model.Livro;
 import io.github.cursodsousa.libraryapi.repository.LivroRepository;
-import io.github.cursodsousa.libraryapi.repository.specs.LivroSpecs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static io.github.cursodsousa.libraryapi.repository.specs.LivroSpecs.*; // Importando os metodos staticos
+// Podemos agora usar diretamente os metodos staticos
+import static io.github.cursodsousa.libraryapi.repository.specs.LivroSpecs.*;
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +39,8 @@ public class LivroService {
                                 GeneroLivro genero,
                                 Integer anoPublicação){
 
-        // Conjunction -> nada mais eh do que o criterio verdadeiro
+        // Conjunction -> nada mais eh do que o criterio verdadeiro (retorna 0 = 0)
+        // select * from Livro where 0 = 0
         Specification<Livro> specs = Specification.where((root, query, cb) -> cb.conjunction());
 
         if (isbn != null) {
@@ -56,6 +57,6 @@ public class LivroService {
             specs = specs.and(generoEqual(genero));
         }
 
-        return repository.findAll(specs);
+        return repository.findAll(specs);  // Encontre todos baseado nas Specifications passadas
     }
 }
