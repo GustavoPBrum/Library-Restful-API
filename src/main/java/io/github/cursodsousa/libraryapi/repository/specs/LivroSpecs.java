@@ -12,7 +12,7 @@ public class LivroSpecs {
     // cb = criteria builder (que vai possuir os criterios)
 
     public static Specification<Livro> isbnEqual(String isbn){
-        // root.get("") --> campo que queremos comparar , objeto de comparacao
+        // root.get("") --> campo que queremos comparar , parametro de comparacao
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("isbn"), isbn);
     }
 
@@ -27,5 +27,15 @@ public class LivroSpecs {
         return (root, query, criteriaBuilder) ->
                 // No root.get sempre por o nome da propriedade e nao o nome do campo no BD
                 criteriaBuilder.equal(root.get("genero"), genero);
+    }
+
+    public static Specification<Livro> anoPublicacaoEqual(Integer anoPublicacao) {
+        // and to_char(data_publicacao, "YYYY") = :anoPublicacao
+        return (root, query, cb) -> cb.equal(
+                // nome da funcao || o que retorna || propriedade comparada (entidade) || expression literal
+                cb.function("to_char", String.class, root.get("dataPublicacao"), cb.literal("YYYY")),
+
+                // Vai ser uma comparacao de String
+                anoPublicacao.toString());
     }
 }

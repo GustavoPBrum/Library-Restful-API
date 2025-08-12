@@ -57,6 +57,10 @@ public class LivroService {
             specs = specs.and(generoEqual(genero));
         }
 
+        if (anoPublicação != null) {
+            specs = specs.and(anoPublicacaoEqual(anoPublicação));
+        }
+
         return repository.findAll(specs);  // Encontre todos baseado nas Specifications passadas
     }
 }
