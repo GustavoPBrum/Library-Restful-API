@@ -6,10 +6,26 @@ https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
 <------------ AULA 109 ------------>
 
+Faltando somente o nomeAutorLike, criamos o metodo no LivroSpec e foi feito de duas formas, de forma SIMPLES no qual nao
+escolhemos o join (que por padrao eh INNER JOIN) e da forma no qual escolhemos o join.
 
 ----------- FORMA SIMPLES SEM JOIN -----------
+Dessa forma NAO podemos controlar a forma de usar o Join como quisermos
+
+Colocamos as chaves por se tratar de mais uma linha de codigo
 return (root, query, cb) -> {
-            // 1 get -> navega por livro e vai na prop autor
-            // 2 get -> navega por autor e vai na prop nome
-            return cb.like(cb.upper(root.get("autor").get("nome")), "%" + nome.toUpperCase() + "%");
-        };
+    // 1 get -> navega por livro e vai na prop autor
+    // 2 get -> navega por autor e vai na prop nome
+    return cb.like(cb.upper(root.get("autor").get("nome")), "%" + nome.toUpperCase() + "%");
+};
+
+Da forma abaixo podemos controlar na forma que usaremos o Join
+----------- FORMA COM JOIN -----------
+// Join -> nome do atributo e tipo do Join (Inner, Left, Right)
+Join<Object, Object> joinAutor = root.join("autor", JoinType.LEFT);
+
+// joinAutor eh um objeto do tipo root (permitindo navegar dentro do autor)
+return cb.like( cb.upper(joinAutor.get("nome")), "%" + nome.toUpperCase() + "%" );
+
+
+Ao fechar a operacao de ATUALIZAR o livro, vamos fazer a paginacao (consultas paginadas com Spring Data JPA)
