@@ -2,6 +2,8 @@ package io.github.cursodsousa.libraryapi.repository.specs;
 
 import io.github.cursodsousa.libraryapi.model.GeneroLivro;
 import io.github.cursodsousa.libraryapi.model.Livro;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 import org.springframework.data.jpa.domain.Specification;
 
 public class LivroSpecs {
@@ -37,5 +39,21 @@ public class LivroSpecs {
 
                 // Vai ser uma comparacao de String
                 anoPublicacao.toString());
+    }
+
+    public static Specification<Livro> nomeAutorLike(String nome) {
+        // Por haver mais de uma linha de codigo, por chaves
+        return (root, query, cb) -> {
+            // 1 get -> navega por livro e vai na prop autor
+            // 2 get -> navega por autor e vai na prop nome
+            //return cb.like(cb.upper(root.get("autor").get("nome")), "%" + nome.toUpperCase() + "%");
+
+            // Join -> nome do atributo e tipo do Join (Inner, Left, Right)
+            Join<Object, Object> joinAutor = root.join("autor", JoinType.LEFT);
+
+            // joinAutor eh um objeto do tipo root (permitindo navegar dentro do autor)
+            return cb.like( cb.upper(joinAutor.get("nome")), "%" + nome.toUpperCase() + "%" );
+
+        };
     }
 }

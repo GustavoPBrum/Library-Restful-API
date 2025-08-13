@@ -48,7 +48,6 @@ public class LivroService {
             specs = specs.and(isbnEqual(isbn));
         }
 
-
         if (titulo != null) {
             specs = specs.and(tituloLike(titulo));
         }
@@ -59,6 +58,10 @@ public class LivroService {
 
         if (anoPublicação != null) {
             specs = specs.and(anoPublicacaoEqual(anoPublicação));
+        }
+
+        if(nomeAutor != null) {
+            specs = specs.and(nomeAutorLike(nomeAutor));
         }
 
         return repository.findAll(specs);  // Encontre todos baseado nas Specifications passadas

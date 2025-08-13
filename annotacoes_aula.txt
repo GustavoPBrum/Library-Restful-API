@@ -4,36 +4,12 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA 108 ------------>
+<------------ AULA 109 ------------>
 
-Criamos o endpoint no LivroController chamado pesquisa com todos os parametros necessarios (isbn, titulo, nomeAutor,
-genero, anoPublicacao).
 
-(Relembrei tambem a diferenca de @RequestParam -> Dados simples (int, String, boolean...) e parametros via URL ||
-de @RequestBody -> Dados complexos em formato JSON vindo no Body dos metodos POST, PUT e PATCH que o Spring vai
-converter em OBJ JAVA)
-
-Chamamos nosso LivroService passando os parametros para o metodo pesquisa guardando os resultados na var 'resulado'
-
-Apos isso, transformamos o resultado em DTO (para nao expor dados nao necessarios)
-
-No Postman criamos a Request Pesquisa para testar com todos os parametros. E entao testamos os metodos ate entao
-criados, isbnEqual, tituloLike e generoEqual analisando a query executada.
-
-Com o metodo anoPublicacaoEqual em LivroSpec criado, notamos que Livro possui dataPublicacao e nao apenas
-anoPublicacao, entao procuramos uma forma de EXTRAIR
-
-Percebemos que podemos utilizar FUNCOES SIMPLES dentro do Specification
-
-Para usar a funcao simples criada abaixo como exemplo:
-and to_char(data_publicacao, "YYYY") = :anoPublicacao
-
-nome da funcao || o que retorna || propriedade comparada (entidade) || expression literal
-cb.function("to_char", String.class, root.get("dataPublicacao"), cb.literal("YYYY")),
-
-Vai ser uma comparacao de String
-anoPublicacao.toString());
-
-Tivemos que passar um expression literal pois o function aceita um nome da funcao, o tipo e o restante eh EXPRESSION
-
-Para finalizar a nossa pesquisa falta o Nome do Autor e junto a isso aprenderemos como utilizar Join em Specification
+----------- FORMA SIMPLES SEM JOIN -----------
+return (root, query, cb) -> {
+            // 1 get -> navega por livro e vai na prop autor
+            // 2 get -> navega por autor e vai na prop nome
+            return cb.like(cb.upper(root.get("autor").get("nome")), "%" + nome.toUpperCase() + "%");
+        };
