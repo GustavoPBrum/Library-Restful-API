@@ -85,10 +85,12 @@ public class LivroController implements GenericController {
     public ResponseEntity<Object> atualizar(@PathVariable("id") String id,
                                           @RequestBody @Valid CadastroLivroDTO dto) {
         return service.obterPorId(UUID.fromString(id))
-                .map( livro -> {
-                    // livro com dados que queremos att
+                .map( livro -> {  // Livro atual (buscado no BD)
+
+                    // livro com dados que queremos att a entidade
                     Livro entidadeAux = mapper.toEntity(dto);
 
+                    // Setamos os dados recebidos (entidade ja mapeada do dto)
                     livro.setDataPublicacao(entidadeAux.getDataPublicacao());
                     livro.setIsbn(entidadeAux.getIsbn());
                     livro.setPreco(entidadeAux.getPreco());
