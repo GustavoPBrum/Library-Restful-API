@@ -70,6 +70,7 @@ public class LivroController implements GenericController {
             @RequestParam(value = "ano-publicacao", required = false)
             Integer anoPublicação) {
         // Retorna o resultado da nossa pesquisa (entidade)
+
         var resultado = service.pesquisa(isbn, titulo, nomeAutor, genero, anoPublicação);
 
         var lista = resultado
@@ -78,5 +79,26 @@ public class LivroController implements GenericController {
                 .collect(Collectors.toList()); // Transformamos em DTO para retornar apenas os dados necessarios
 
         return ResponseEntity.ok(lista);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> atualizar(@PathVariable("id") String id,
+                                          @RequestBody @Valid CadastroLivroDTO dto) {
+        return service.obterPorId(UUID.fromString(id))
+                .map( livro -> {
+                    // livro com dados que queremos att
+                    Livro entidadeAux = mapper.toEntity(dto);
+
+                    livro.setDataPublicacao(entidadeAux.getDataPublicacao());
+                    livro.setIsbn(entidadeAux.getIsbn());
+                    livro.setPreco(entidadeAux.getPreco());
+                    livro.setGenero(entidadeAux.getGenero());
+                    livro.setTitulo(entidadeAux.getTitulo());
+                    livro.setAutor(entidadeAux.getAutor());
+
+                    service.atualizar(livro);
+
+                    return ResponseEntity.noContent().build();
+                }).orElseGet( () -> ResponseEntity.notFound().build() );
     }
 }

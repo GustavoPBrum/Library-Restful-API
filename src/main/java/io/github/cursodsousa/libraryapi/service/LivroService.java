@@ -66,4 +66,12 @@ public class LivroService {
 
         return repository.findAll(specs);  // Encontre todos baseado nas Specifications passadas
     }
+
+    public void atualizar(Livro livro) {
+        if(livro.getId() == null) {
+            throw new IllegalArgumentException("Para atualizar, e necessario que o livro ja esteja salvo.");
+        }
+
+        repository.save(livro);
+    }
 }
