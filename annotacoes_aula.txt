@@ -15,8 +15,9 @@ O Spring Data temm o Page e Pageable que ele disponibiliza para fazer a Paginaca
 Pageable -> Interface que vai definir os parametro de Paginacao, pagina que queremos, quantiade de registro por pagina,
 se tera ordenacao...(a REQUISICAO = parametros passados para obter uma pagina de **pesquisa paginada**)
 
-Page -> Resposta, a nossa pesquisa paginada propriamente dita
+Page -> Resposta, a nossa pesquisa paginada/pagina propriamente dita
 
+---------------------------------------------------------------------------------
 defaultValue esta como string pois PARAMETRO DE REQUISICAO eh String (protocol HTTP trabalha com texto, mas o java
 transforma em Integer, String ou o que for necessario...)
     @RequestParam(value = "pagina", defaultValue = "0")
@@ -26,10 +27,18 @@ transforma em Integer, String ou o que for necessario...)
 
 O retorno de List do endpoint de pesquisa (LivroController) deixou de ser uma lista para uma *Page*
 
+---------------------------------------------------------------------------------
 Implementacao do Pageable que eh o pageRequest:
 Pageable pageRequest = PageRequest.of(pagina, tamanhoPagina);
 
-No LivroController temos a nossa pagina de resultado da nossa pesquisa
+Entao passamos as Specifications junto com os parametros da Requisicao paginada
+
+// Specs -> parametros da pesquisa
+// pageRequest-> parametros da pagina
+return repository.findAll(specs, pageRequest);
+
+---------------------------------------------------------------------------------
+No LivroController temos a nossa pagina de resultado da nossa pesquisa na forma de **Entidade**
 Page<Livro> paginaResultado = service.pesquisa(
                 isbn, titulo, nomeAutor, genero, anoPublicação, pagina, tamanhoPagina);
 

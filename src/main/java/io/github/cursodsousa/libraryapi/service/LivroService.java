@@ -74,6 +74,8 @@ public class LivroService {
 
         Pageable pageRequest = PageRequest.of(pagina, tamanhoPagina);
 
+        // Specs -> parametros da pesquisa
+        // pageRequest-> parametros da pagina
         return repository.findAll(specs, pageRequest);  // Encontre todos baseado nas Specifications passadas
     }
 

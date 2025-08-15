@@ -76,6 +76,7 @@ public class LivroController implements GenericController {
             @RequestParam(value = "tamanho-pagina", defaultValue = "10")
             Integer tamanhoPagina) {
 
+        // Retorna a pagina de Livro(entidade), com os parametros da pesquisa junto com os parametros da pagina
         Page<Livro> paginaResultado = service.pesquisa(
                 isbn, titulo, nomeAutor, genero, anoPublicação, pagina, tamanhoPagina);
 
