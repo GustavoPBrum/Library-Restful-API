@@ -11,6 +11,7 @@ import io.github.cursodsousa.libraryapi.repository.LivroRepository;
 import io.github.cursodsousa.libraryapi.service.LivroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,7 +59,7 @@ public class LivroController implements GenericController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ResultadoPesquisaLivroDTO>> pesquisa(
+    public ResponseEntity<Page<ResultadoPesquisaLivroDTO>> pesquisa(
             @RequestParam(value = "isbn", required = false)
             String isbn,
             @RequestParam(value = "titulo", required = false)
@@ -68,17 +69,21 @@ public class LivroController implements GenericController {
             @RequestParam(value = "genero", required = false)
             GeneroLivro genero,
             @RequestParam(value = "ano-publicacao", required = false)
-            Integer anoPublicação) {
+            Integer anoPublicação,
+            // defaultValue esta como string pois PARAMETRO DE REQUISICAO eh String (protocol HTTP trabalha com texto)
+            @RequestParam(value = "pagina", defaultValue = "0")
+            Integer pagina,
+            @RequestParam(value = "tamanho-pagina", defaultValue = "10")
+            Integer tamanhoPagina) {
         // Retorna o resultado da nossa pesquisa (entidade)
 
-        var resultado = service.pesquisa(isbn, titulo, nomeAutor, genero, anoPublicação);
+        Page<Livro> paginaResultado = service.pesquisa(
+                isbn, titulo, nomeAutor, genero, anoPublicação, pagina, tamanhoPagina);
 
-        var lista = resultado
-                .stream()
-                .map(mapper::toDTO)
-                .collect(Collectors.toList()); // Transformamos em DTO para retornar apenas os dados necessarios
+        // O proprio metodo MAP retorna uma pagina
+        Page<ResultadoPesquisaLivroDTO> resultado = paginaResultado.map(mapper::toDTO); // Page Livro --> Page  DTO
 
-        return ResponseEntity.ok(lista);
+        return ResponseEntity.ok(resultado);
     }
 
     @PutMapping("/{id}")
