@@ -4,44 +4,5 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA 113 ------------>
-Com a Pesquisa Paginada podemos reduzir o processamento pesado e deixar um valor padrao de elementos por pagina que
-pode ser definido pelo usuario.
+<------------ AULA  ------------>
 
-Toda vez quando clicado para ir para outra pagina ela solicita para o servidor la na API para a proxima pagina.
-
-O Spring Data temm o Page e Pageable que ele disponibiliza para fazer a Paginacao.
-
-Pageable -> Interface que vai definir os parametro de Paginacao, pagina que queremos, quantiade de registro por pagina,
-se tera ordenacao...(a REQUISICAO = parametros passados para obter uma pagina de **pesquisa paginada**)
-
-Page -> Resposta, a nossa pesquisa paginada/pagina propriamente dita
-
----------------------------------------------------------------------------------
-defaultValue esta como string pois PARAMETRO DE REQUISICAO eh String (protocol HTTP trabalha com texto, mas o java
-transforma em Integer, String ou o que for necessario...)
-    @RequestParam(value = "pagina", defaultValue = "0")
-    Integer pagina,
-    @RequestParam(value = "tamanho-pagina", defaultValue = "10")
-    Integer tamanhoPagina)
-
-O retorno de List do endpoint de pesquisa (LivroController) deixou de ser uma lista para uma *Page*
-
----------------------------------------------------------------------------------
-Implementacao do Pageable que eh o pageRequest:
-Pageable pageRequest = PageRequest.of(pagina, tamanhoPagina);
-
-Entao passamos as Specifications junto com os parametros da Requisicao paginada
-
-// Specs -> parametros da pesquisa
-// pageRequest-> parametros da pagina
-return repository.findAll(specs, pageRequest);
-
----------------------------------------------------------------------------------
-No LivroController temos a nossa pagina de resultado da nossa pesquisa na forma de **Entidade**
-Page<Livro> paginaResultado = service.pesquisa(
-                isbn, titulo, nomeAutor, genero, anoPublicação, pagina, tamanhoPagina);
-
-Mas ainda temos de transforma-la em uma Page DTO:
-// O proprio metodo MAP retorna uma pagina
-Page<ResultadoPesquisaLivroDTO> resultado = paginaResultado.map(mapper::toDTO); // Page Livro --> Page  DTO
