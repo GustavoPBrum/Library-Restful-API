@@ -4,5 +4,15 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA  ------------>
+<------------ AULA 118  ------------>
 
+httpBasic e formLogin nao sao obrigatorios, mas temos que deixar uma forma do usuario se autenticar.
+
+.formlogin -> pagina web no qual colocamos user e senha (usuario)
+
+.httpBasic -> Header Authorization (app para app, como Postman por exemplo)
+
+Header           Value
+Authorization    Basic user:senha (com encode Base64)
+
+Por ser com Base64 acaba nao sendo tao seguro por qualquer um pode decodificar.
