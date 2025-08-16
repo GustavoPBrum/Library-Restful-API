@@ -8,11 +8,18 @@ https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
 httpBasic e formLogin nao sao obrigatorios, mas temos que deixar uma forma do usuario se autenticar.
 
-.formlogin -> pagina web no qual colocamos user e senha (usuario)
+.formlogin -> pagina web no qual colocamos(usuario) login e senha (usuario, via browser)
 
 .httpBasic -> Header Authorization (app para app, como Postman por exemplo)
 
+---------- httpBasic Header ----------
 Header           Value
 Authorization    Basic user:senha (com encode Base64)
 
-Por ser com Base64 acaba nao sendo tao seguro por qualquer um pode decodificar.
+Por ser com Base64 acaba nao sendo tao seguro por qualquer um pode decodificar tendo acesso ao login e senha.
+
+---------- httpBasic Authorization  ----------
+
+Na Aba de Authorization no Postman, definimos o 'Auth Type' para **Basic Auth**:
+
+Preenchemos o USER e PASSWORD com as credenciais corretas de autenticacao e assim podemos acessar/enviar a Request
