@@ -20,9 +20,11 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)  // Permite que outras app facam uma REQUISICAO pro sistema
                 // autenticacao via browser
-                .formLogin(Customizer.withDefaults())  // Formlogin sem config extra, ele add o formulario padrao
+                .formLogin(configurer -> {  // Dizendo que a page de login eh esta
+                    configurer.loginPage("/login").permitAll();
+                })  // Formlogin sem config extra, ele add o formulario padrao
                 // Postman
-                .httpBasic(Customizer.withDefaults())
+                //.httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authoize -> {  // Qualquer Request pra essa API TEM que estar Autenticado
                     authoize.anyRequest().authenticated();
                 })
