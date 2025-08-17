@@ -22,7 +22,4 @@ Criamos a Classe de configuracao WebConfiguration, habilitamos EnableMVC dentro 
 Quando dentro de um @Controller, retornamos Strings para indicar a pagina que ele tem que ir quando chamar essa
 requisicao
 
-15:16
-8. Aprendendo Spring Security
-119. Habilitando e customizando formulario de login
 Para deslogar, inspecionar(F12), application, cookies e apagar o cookie da sessao
