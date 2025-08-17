@@ -4,4 +4,25 @@ https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
 ---------- Contrato API Livros ----------
 https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 
-<------------ AULA   ------------>
+<------------ AULA  119  - Hab e Customizando FormLogin ------------>
+
+Para customizar nosso formulario de Login vamos add no pom.xml o starter do time Leaf
+
+starter thymeleaf
+
+Criamos uma pasta de template nos RESOURCES e criamos a nossa pagina de Login.html
+
+Declarar namespace
+
+Criamos a Classe de configuracao WebConfiguration, habilitamos EnableMVC dentro da app e permitindo utilizar PAGINAS WEB dentro da app
+
+@RestController -> Para API, requisicoes Rest, mandando e recebendo obj JSON
+@Controller -> quando utilizamos paginas WEB
+
+Quando dentro de um @Controller, retornamos Strings para indicar a pagina que ele tem que ir quando chamar essa
+requisicao
+
+15:16
+8. Aprendendo Spring Security
+119. Habilitando e customizando formulario de login
+Para deslogar, inspecionar(F12), application, cookies e apagar o cookie da sessao
