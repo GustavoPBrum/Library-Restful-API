@@ -10,4 +10,11 @@ https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 .formlogin(Customizer.withDefaults()) -> habilita o formulario de Login padrao do Spring
 
 
+--------------------------------------------------------------------------------
+no POM.xml adicionamos o ***STARTER thymeleaf***
+
+thymeleaf --> uma biblioteca para fazer paginas WEB em app Spring (cria paginas WEB dentro da app e fazer ela se
+comunicar com a API)
+
+
 
