@@ -17,4 +17,9 @@ thymeleaf --> uma biblioteca para fazer paginas WEB em app Spring (cria paginas 
 comunicar com a API)
 
 
+--------------------------------------------------------------------------------
+Com o package criado Templates dentro de resources, criamos o LOGIN.HTML
+
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">  --> namespace do thymeleaf, podendo usar a tag *th* para
+adicionar as diretivas do thymeleaf
 
