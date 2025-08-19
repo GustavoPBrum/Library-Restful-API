@@ -32,3 +32,16 @@ Pegando username e password, seus valores e fazendo um post para /login
 
 Para isto funcionar tens que ter um button="submit", pois apenas tendo esse button (submit) dentro do form que ele vai
 executar o *POST* para /login
+
+
+--------------------------------------------------------------------------------
+Criamos a classe WebConfiguration, com @Configuration e @EnableWebMvc (model, view, controller) permitindo utilizar
+paginas web dentro da app, tambem **implementando** WebMvcConfigurer
+
+registry.addViewController("/login").setViewName("login");  --> quando acessar URL /login, sera a pagina login.html
+
+RestController -> API, Requisicoes REST, objetos JSON
+
+Controller -> Paginas WEB
+
+
