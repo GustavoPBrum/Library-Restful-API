@@ -45,3 +45,5 @@ RestController -> API, Requisicoes REST, objetos JSON
 Controller -> Paginas WEB
 
 
+--------------------------------------------------------------------------------
+Quando dentro de um @Controller, retornamos String para indicar qual a pagina tem que ir quando chamar essa Requisicao
