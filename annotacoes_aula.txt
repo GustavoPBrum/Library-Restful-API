@@ -23,3 +23,12 @@ Com o package criado Templates dentro de resources, criamos o LOGIN.HTML
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">  --> namespace do thymeleaf, podendo usar a tag *th* para
 adicionar as diretivas do thymeleaf
 
+----- QUAL ACAO O FORMULARIO VAI EXECUTAR QUANDO FIZER UM SUBMIT -----
+<form method="post" th:action="@{/login}">  --> quando submeter o formulario ele vai fazer um post para /login
+
+Com os campos Usuario e senha, colocamos input chamados name de name="username" e name="password" respectivamente
+
+Pegando username e password, seus valores e fazendo um post para /login
+
+Para isto funcionar tens que ter um button="submit", pois apenas tendo esse button (submit) dentro do form que ele vai
+executar o *POST* para /login
