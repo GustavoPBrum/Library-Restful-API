@@ -56,3 +56,6 @@ Quando dentro de um @Controller, retornamos String para indicar qual a pagina te
     .permitAll(); // permite que todos consigam acessar a pagina de Login (nao estando protegida com Authentication)
 })
 
+
+--------------------------------------------------------------------------------
+Com .formlogin ele guarda o cookie no browser para dizer que aquilo eh a sua sessao
