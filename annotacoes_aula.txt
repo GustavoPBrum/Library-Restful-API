@@ -47,3 +47,12 @@ Controller -> Paginas WEB
 
 --------------------------------------------------------------------------------
 Quando dentro de um @Controller, retornamos String para indicar qual a pagina tem que ir quando chamar essa Requisicao
+
+
+--------------------------------------------------------------------------------
+// Dizendo que a page de login eh esta (login.html) e nao a padrao do Spring
+
+.formLogin(configurer -> { configurer.loginPage("/login")
+    .permitAll(); // permite que todos consigam acessar a pagina de Login (nao estando protegida com Authentication)
+})
+
