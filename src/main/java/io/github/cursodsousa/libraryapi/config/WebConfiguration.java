@@ -14,7 +14,8 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
 
         // Nome da pag criada
+        // Quando acessar a URl */login*, sera a pagina login.html
         registry.addViewController("/login").setViewName("login");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);  // Suficiente para registrar a pag de Login da aplicacao
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);  // Mais alta precedencia
     }
 }
