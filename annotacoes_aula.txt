@@ -7,35 +7,19 @@ https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
 <------------ Aula 120 - Contexto Autenticacao Usuarios ------------>
 
 Authentication -> Principal interface que o Spring Security disponibiliza
-
 Ha tambem as intefaces de UserDetails e UserDetailsService
 
-2:17
-8. Aprendendo Spring Security
-120. Entendendo o contexto de autenticação de Usuários
 Independente da forma de Authentication (formLogin, httpBasic, Auth2), tera um objeto (implementacao) Authentication
 
 Objeto Authentication vai carregar as informacoes importantes de quem eh aquele usuario autenticado, suas credencias, o
 que pode ou nao fazer...
 
-2:59
-8. Aprendendo Spring Security
-120. Entendendo o contexto de autenticação de Usuários
 UserDetails -> Login, senha e as permissoes/autoridades do usuario
 
-4:22
-8. Aprendendo Spring Security
-120. Entendendo o contexto de autenticação de Usuários
 UserDetailsService -> interface com um unico metodo de LoadUserbyUsername que retorna uma INSTANCIA de UserDetails
 (implementacao da busca de usuario)
 
-4:52
-8. Aprendendo Spring Security
-120. Entendendo o contexto de autenticação de Usuários
 UserDetailsService prove um OBJETO do tipo UserDetails
 
-5:32
-8. Aprendendo Spring Security
-120. Entendendo o contexto de autenticação de Usuários
 Com o objeto UserDetails autenticado CORRETAMENTE, produzira um objeto do tipo Authentication (objetivo) e que sera
 adicionada dentro do contexto do Spring Security
