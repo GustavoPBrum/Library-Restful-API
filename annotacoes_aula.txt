@@ -1,8 +1,5 @@
----------- Contrato API Autor ----------
-https://whimsical.com/cadastro-de-autor-8jTJxcmJu3pFjKhDp35msT
-
----------- Contrato API Livros ----------
-https://whimsical.com/cadastro-de-livros-9DSAXP3UZJdBMybJKQmLSd
+---------- Spring Security ----------
+https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
 <------------ Aula 120 - Contexto Autenticacao Usuarios ------------>
 
@@ -23,3 +20,4 @@ UserDetailsService prove um OBJETO do tipo UserDetails
 
 Com o objeto UserDetails autenticado CORRETAMENTE, produzira um objeto do tipo Authentication (objetivo) e que sera
 adicionada dentro do contexto do Spring Security
+
