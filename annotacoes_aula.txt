@@ -4,16 +4,16 @@ https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 <------------ Aula 122 - Roles de Usuarios ------------>
 
 Somente usuarios com a ROLE ADMIN poderao fazer operacoes para /autores
-authoize.requestMatchers("/autores/**").hasRole("ADMIN");
+authorize.requestMatchers("/autores/**").hasRole("ADMIN");
 
 Isso define que se caso o sistema tenha muitas URLs, qualquer request alem da que esta acima tem que estar PELO MENOS
 *AUTENTICADA*
-authoize.anyRequest().authenticated();
+authorize.anyRequest().authenticated();
 
-authoize.requestMatchers("/login").permitAll(); --> login precisa ser permiteAll pois os usuarios PRECISAM acessa-los
+authorize.requestMatchers("/login").permitAll(); --> login precisa ser permiteAll pois os usuarios PRECISAM acessa-los
 para se cadastrarem.
 
-authoize.anyRequest().authenticated();  --> qualquer coisa abaixo de anyRequest sera ignorada, ele tem que ser o ULTIMO
+authorize.anyRequest().authenticated();  --> qualquer coisa abaixo de anyRequest sera ignorada, ele tem que ser o ULTIMO
 
 401 Unauthorized -> Credenciais incorretas
 403 Forbidden -> Proibido, nao tem permissao (apesar de estar autenticado)

@@ -31,15 +31,15 @@ public class SecurityConfiguration {
                     configurer.loginPage("/login");
                 })
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(authoize -> {
+                .authorizeHttpRequests(authorize -> {
                     // permite todos acessar /login sem estarem autenticados
-                    authoize.requestMatchers("/login/**").permitAll();
+                    authorize.requestMatchers("/login/**").permitAll();
                     // Somente admnistradores podem fazer op em autores
-                    authoize.requestMatchers("/autores/**").hasRole("ADMIN");
-                    authoize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
+                    authorize.requestMatchers("/autores/**").hasRole("ADMIN");
+                    authorize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
 
                     // Para alem das requisicoes acima, deve estar pelo menos autenticado (se nao for user, nem admin)
-                    authoize.anyRequest().authenticated(); // Qualquer Request pra essa API TEM que estar Autenticado
+                    authorize.anyRequest().authenticated(); // Qualquer Request pra essa API TEM que estar Autenticado
 
                     // Qualquer regra abaixo do anyRequest sera ignorada!!!
                 })
