@@ -69,7 +69,7 @@ public class LivroController implements GenericController {
             @RequestParam(value = "genero", required = false)
             GeneroLivro genero,
             @RequestParam(value = "ano-publicacao", required = false)
-            Integer anoPublicação,
+            Integer anoPublicacao,
             // defaultValue esta como string pois PARAMETRO DE REQUISICAO eh String (protocol HTTP trabalha com texto)
             @RequestParam(value = "pagina", defaultValue = "0")
             Integer pagina,
@@ -78,7 +78,7 @@ public class LivroController implements GenericController {
 
         // Retorna a pagina de Livro(entidade), com os parametros da pesquisa junto com os parametros da pagina
         Page<Livro> paginaResultado = service.pesquisa(
-                isbn, titulo, nomeAutor, genero, anoPublicação, pagina, tamanhoPagina);
+                isbn, titulo, nomeAutor, genero, anoPublicacao, pagina, tamanhoPagina);
 
         // O proprio metodo MAP retorna uma pagina
         Page<ResultadoPesquisaLivroDTO> resultado = paginaResultado.map(mapper::toDTO); // Page Livro --> Page  DTO
