@@ -2,6 +2,7 @@ package io.github.cursodsousa.libraryapi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,12 +28,20 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)  // Permite que outras app facam uma REQUISICAO pro sistema
                 // autenticacao via browser
                 .formLogin(configurer -> {  // Dizendo que a page de login eh esta
-                    configurer.loginPage("/login").permitAll();
-                })  // Formlogin sem config extra, ele add o formulario padrao
-                // Postman
+                    configurer.loginPage("/login");
+                })
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(authoize -> {  // Qualquer Request pra essa API TEM que estar Autenticado
-                    authoize.anyRequest().authenticated();
+                .authorizeHttpRequests(authoize -> {
+                    // permite todos acessar /login sem estarem autenticados
+                    authoize.requestMatchers("/login").permitAll();
+                    // Somente admnistradores podem fazer op em autores
+                    authoize.requestMatchers("/autores/**").hasRole("ADMIN");
+                    authoize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
+
+                    // Para alem das requisicoes acima, deve estar pelo menos autenticado (se nao for user, nem admin)
+                    authoize.anyRequest().authenticated(); // Qualquer Request pra essa API TEM que estar Autenticado
+
+                    // Qualquer regra abaixo do anyRequest sera ignorada!!!
                 })
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
@@ -44,6 +53,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    // Gera instancia do UserDetails
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         // Nao podemos salvar a senha hardEncoded, precisa de alguma codificacao na senha para seguranca e comparacao
         UserDetails user1 = User.builder()
@@ -52,6 +62,7 @@ public class SecurityConfiguration {
                 .roles("USER")  // Roles geralmente em caixa alta
                 .build();
 
+        // Os dados do Usuario, Authentication eh o que fica no contexto do Spring Security
         UserDetails user2 = User.builder()
                 .username("admin")
                 .password(encoder.encode("321"))
