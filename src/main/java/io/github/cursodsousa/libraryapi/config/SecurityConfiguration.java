@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authoize -> {
                     // permite todos acessar /login sem estarem autenticados
-                    authoize.requestMatchers("/login").permitAll();
+                    authoize.requestMatchers("/login/**").permitAll();
                     // Somente admnistradores podem fazer op em autores
                     authoize.requestMatchers("/autores/**").hasRole("ADMIN");
                     authoize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
