@@ -1,5 +1,21 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------  ------------>
+<------------ Aula 123 - Criando estrutura de Usuarios no BD ------------>
 
+Nessa aula mapeamos a entidade Usuario
+
+Criamos o script SQL para executarmos no pgAdmin 4 seguindo de acordo com a entidade mapeada
+
+Adicionamos no POM.xml a biblioteca de hypersistence
+
+A biblioteca de hypersistence vai resolver o problema de traducao do nosso:
+
+List<String> roles do obj para...
+
+varchar[] do BD
+
+Para tal utilizamos a annotation @Type() para @Type(ListArrayType.class) que vai funcionar como um tradutor
+
+Tambem especificamos na propriedade **roles** com a annotation @Column(name = "roles", columnDefinition = "varchar[]")
+qual sera a definicao desta propriedade no BD
