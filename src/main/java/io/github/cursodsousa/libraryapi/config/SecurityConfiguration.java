@@ -17,7 +17,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity  // Por ser uma config de seguranca
-public class SecurityConfiguration {
+public class
+SecurityConfiguration {
 
     // Quando declarado esse Bean, desabilita o @Bean padrao e passa a atender as config deste Bean
     @Bean
@@ -34,6 +35,10 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> {
                     // permite todos acessar /login sem estarem autenticados
                     authorize.requestMatchers("/login/**").permitAll();
+
+                    // Permite todos cadastrarem seus usuarios.
+                    authorize.requestMatchers(HttpMethod.POST, "/usuarios/**" ).permitAll();
+
                     // Somente admnistradores podem fazer op em autores
                     authorize.requestMatchers("/autores/**").hasRole("ADMIN");
                     authorize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
