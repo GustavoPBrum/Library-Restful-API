@@ -12,9 +12,13 @@ unica instancia de PasswordEncoder.
 Feito a API para cadastrar Usuario no banco com metodo salvar() (criptografando a senha) e o metodo obterPorLogin
 (QueryMethod).
 
-Criamos a interface UsuarioMapper para poder injeta-lo em UsuarioController e poder fazer o mapeamento toEntity e
-toDTO (separando a view da entidade/BD)
+Criado o UsuarioDTO e a interface UsuarioMapper com os metodos toEntity e toDTO, para representar a view e separa-las da
+entidade.
+
+Com o UsuarioMapper podemos injeta-lo em UsuarioController, apos injetar podemos fazer o metodo salvar() no qual recebe
+no @RequestBody um UsuarioDTO e
 
 Criamos no Postman o folder de Usuarios com metodo POST para cadastrar Usuarios no BD (alem de cadastrar 2 usuarios)
 
 Usuarios cadastrados -> admin e tecnico.
+
