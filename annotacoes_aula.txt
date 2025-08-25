@@ -1,5 +1,39 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 124 -  ------------>
+<------------ Aula 124 - Cadastro Usuarios ------------>
 
+0:34
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Criamos JPA Repository do Usuario, Service
+
+1:10
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Injetamos PasswordEncoder por causa que o service tem a logica de negocio e antes de salvar um usuario, vamos criptografar sua senha
+
+2:42
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+No SecurityConfiguration definimos a criptografia como Bcr
+
+5:48
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Criamos a API para cadastrar Usuario no banco com metodo salvar().
+
+6:30
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Criamos o UsuarioController.
+
+7:58
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Criamos a interface UsuarioMapper para poder injeta-lo na ap
+
+10:45
+8. Aprendendo Spring Security
+124. Implementando o cadastro de usuários
+Criamos no Postman o folder de Usuarios com metodo POST para cadastrar Usuarios no BD (alem de cadastrar 2 usuarios)
