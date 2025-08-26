@@ -3,5 +3,17 @@ https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
 <------------ Aula 125 - Criando UserDetailsService Customizado ------------>
 
+Criamos a classe CustomUserDetailsService no qual implementamos a interface UserDetailsService, a propriedade
+UsuarioService.
 
+Tambem foi sobescrito o metodo loadUserByUsername no qual retorna uma instancia de UserDetails, mas caso o login nao
+exista lanca uma excecao.
 
+Caso seja encontrado um Usuario com este login, retornamos uma instancia de User (core de security) no qual ele possui
+os metodos de .username, .password...
+
+... E .roles cujo precisamos transformar uma List<String> em um array com toArray(new String [...getRoles().size()])
+
+E por fim buildar esse objeto user criado e retorna-lo como Instancia de UserDetails
+
+Com isso fica FINALIZADO a logica de **SEGURANCA** da app
