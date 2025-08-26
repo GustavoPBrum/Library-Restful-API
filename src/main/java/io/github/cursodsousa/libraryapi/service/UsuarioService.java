@@ -13,16 +13,17 @@ import java.util.Optional;
 public class UsuarioService {
 
     private final UsuarioRepository repository;
+
+    // Injetamos a interface para caso mude a criptografia, tera apenas um ponto de alteracao
     private final PasswordEncoder encoder; // Antes de salvar o usuario, vamos criptografar a senha
 
     public void salvar(Usuario usuario) {
         var senha = usuario.getSenha();
-        usuario.setSenha(encoder.encode(senha));
+        usuario.setSenha(encoder.encode(senha));  // Senha criptografada
         repository.save(usuario);
     }
 
-    public Optional<Usuario> obterPorLogin(String login) {
+    public Usuario obterPorLogin(String login) {
         return repository.findByLogin(login);
     }
-
 }
