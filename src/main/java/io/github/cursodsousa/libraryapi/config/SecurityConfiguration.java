@@ -19,8 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity  // Por ser uma config de seguranca
-public class
-SecurityConfiguration {
+public class SecurityConfiguration {
 
     // Quando declarado esse Bean, desabilita o @Bean padrao e passa a atender as config deste Bean
     @Bean
