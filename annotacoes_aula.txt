@@ -1,18 +1,4 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 125 - Criando UserDetailsService Customizado ------------>
-
-Criamos o CustomUserDetailsService que implementa UserDetailsService, sobrescrevemos o metodo LoadUserByUsername, e
-utilizamos o metodo ObterPorLogin de UsuarioService (propriedade final) para procurar um usuario pelo Login
-
-Em caso de nao achar, lanca a excecao UsernameNotFoundException e caso diferente de nulo, retorna um User core do
-Spring Security, com login, senha e array de Strings
-
-Deixamos de gerar os usuarios em memoria para fazer autenticacao para agora consultarmos os usuarios inseridos no banco
-de dados atraves do Basic Auth (para validar requisicao)
-
-Agora nosso UserDetailsService retorna um CustomUserDetailsService com UsuarioService como argumento (propriedade final
-no nosso @RequiredArgsConstructor)
-
-E por fim testamos as validacoes de ambos os usuarios, USER/ADMIN
+<------------ Aula  -  ------------>

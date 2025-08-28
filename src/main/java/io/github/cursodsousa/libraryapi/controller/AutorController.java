@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -32,6 +33,7 @@ public class AutorController implements GenericController {
 
     //@RequestMapping(method = RequestMethod.POST)  // Ou desta forma com mais parametros
     @PostMapping                        // Indica que este objeto vai vir no corpo da request
+    @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<Void> salvar(@RequestBody @Valid AutorDTO dto) {  // Valid ja faz a validacao no comeco
         Autor autor = mapper.toEntity(dto);
         service.salvar(autor);
@@ -44,6 +46,7 @@ public class AutorController implements GenericController {
     }
 
     @GetMapping("{id}")  // Optional pois pode existir ou nao
+    @PreAuthorize("hasAnyRole('OPERADOR', 'GERENTE')")
     public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id) {
         var idAutor = UUID.fromString(id);
 
@@ -57,6 +60,7 @@ public class AutorController implements GenericController {
     }
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<Void> deletar(@PathVariable("id") String id) {
 
         var idAutor = UUID.fromString(id);
@@ -73,6 +77,7 @@ public class AutorController implements GenericController {
 
     // Sempre na entrada e saida de dados utilizando o DTO, pois faz parte da camada representacional
     @GetMapping
+    @PreAuthorize("hasAnyRole('OPERADOR', 'GERENTE')")
     public ResponseEntity<List<AutorDTO>> pesquisa(
             // // Caso queira nomes diferentes na URL, usar value = "...", required por causa que nao sao obrigatorios
             @RequestParam(value = "nome", required = false) String nome,
@@ -88,6 +93,7 @@ public class AutorController implements GenericController {
     }
 
     @PutMapping("{id}")
+    @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<Void> atualizar(
             @PathVariable("id") String id,
             @RequestBody @Valid AutorDTO autorDTO) { // Transforma o JSON que veio no Body no autorDTO

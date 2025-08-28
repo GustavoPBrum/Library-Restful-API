@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -19,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity  // Por ser uma config de seguranca
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)  // Habilita para fazer nos controllers (permissoes)
 public class SecurityConfiguration {
 
     // Quando declarado esse Bean, desabilita o @Bean padrao e passa a atender as config deste Bean
@@ -39,10 +41,6 @@ public class SecurityConfiguration {
 
                     // Permite todos cadastrarem seus usuarios.
                     authorize.requestMatchers(HttpMethod.POST, "/usuarios/**" ).permitAll();
-
-                    // Somente admnistradores podem fazer op em autores
-                    authorize.requestMatchers("/autores/**").hasRole("ADMIN");
-                    authorize.requestMatchers("/livros/**").hasAnyRole("USER", "ADMIN");
 
                     // Para alem das requisicoes acima, deve estar pelo menos autenticado (se nao for user, nem admin)
                     authorize.anyRequest().authenticated(); // Qualquer Request pra essa API TEM que estar Autenticado
