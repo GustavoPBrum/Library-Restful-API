@@ -1,4 +1,22 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula  -  ------------>
+<------------ Aula 127 - Auditoria dos Usuarios que fazem Operacoes ------------>
+
+Faltou setar os usuarios para auditoria, saber qual usuario que fez tal operacao
+
+Criamos a classe SecurityService (com @Componente registrado no contexto Spring), com metodo obterUsuarioLogado e com
+propriedade UsuarioService e @RequiredArgsConstructor
+
+obterUsuarioLogado --> Pega o contexto Spring e dentro dele conseguimos o authentication
+SecurityContextHolder.getContext().getAuthentication();
+
+Fazemos o downcasting de authentication.getPrincipal() (Pois retorna um Object) para UserDetails
+
+Do UserDetails tiramos o login e utilizamos o metodo obterPorLogin do UsuarioService para retornar o *USUARIO LOGADO*
+
+Apos isso, injetamos em ambos LivroService e AutorService SecurityService e antes de salvar, obtemos o UsuarioLogado e
+setamos ele antes de persistir o objeto
+
+Tambem alteramos em ambas classes LivroService e AutorService a propriedade idUsuario para o relacionamento Usuario com
+@JoinColumn com @ManyToOne
