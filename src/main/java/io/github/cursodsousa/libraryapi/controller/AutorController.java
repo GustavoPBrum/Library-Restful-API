@@ -36,9 +36,9 @@ public class AutorController implements GenericController {
     private final AutorMapper mapper;
 
     //@RequestMapping(method = RequestMethod.POST)  // Ou desta forma com mais parametros
-    @PostMapping                        // Indica que este objeto vai vir no corpo da request
+    @PostMapping
     @PreAuthorize("hasRole('GERENTE')")
-                                                    // Valid ja faz a validacao no comeco
+    // @RequestBody objeto vai vir no corpo da request // Valid ja faz a validacao no comeco
     public ResponseEntity<Void> salvar(@RequestBody @Valid AutorDTO dto) {
         Autor autor = mapper.toEntity(dto);
         service.salvar(autor);
@@ -50,8 +50,9 @@ public class AutorController implements GenericController {
         return ResponseEntity.created(location).build();
     }
 
-    @GetMapping("{id}")  // Optional pois pode existir ou nao
+    @GetMapping("{id}")
     @PreAuthorize("hasAnyRole('OPERADOR', 'GERENTE')")
+    // Optional pois pode existir ou nao
     public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id) {
         var idAutor = UUID.fromString(id);
 
