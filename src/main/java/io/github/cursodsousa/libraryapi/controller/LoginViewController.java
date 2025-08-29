@@ -17,6 +17,6 @@ public class LoginViewController {
     @GetMapping("/")
     @ResponseBody  // Pega o retorno (String) e coloca no corpo da resposta nao tendo que retornar uma pagina WEB
     public String paginaHome(Authentication authentication){
-        return "Ola     " + authentication.getName();
+        return "Ola " + authentication.getName();
     }
 }
