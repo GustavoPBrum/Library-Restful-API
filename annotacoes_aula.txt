@@ -1,22 +1,24 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 127 - Auditoria dos Usuarios que fazem Operacoes ------------>
+<------------ Aula 129 - Criando nossa propria Authentication ------------>
 
-Faltou setar os usuarios para auditoria, saber qual usuario que fez tal operacao
+Criamos uma Authentication Customizada, o objeto central gerado em cadam uma das formas de autenticacao.
 
-Criamos a classe SecurityService (com @Componente registrado no contexto Spring), com metodo obterUsuarioLogado e com
-propriedade UsuarioService e @RequiredArgsConstructor
+Este objeto vai carregar **identificacao do usuario, quem esta logado da sessao de usuario**
 
-obterUsuarioLogado --> Pega o contexto Spring e dentro dele conseguimos o authentication
-SecurityContextHolder.getContext().getAuthentication();
+Arquitetos do Spring Security recomendam que carreguemos nossas PROPRIAS AUTHENTICATIONS
 
-Fazemos o downcasting de authentication.getPrincipal() (Pois retorna um Object) para UserDetails
+Criamos o CustomAuthentication cujo implementa Authentication junto de todos os seus metodos que uma Authentication deve
+impor. Tambem carrega o obj Usuario como propriedade de construtor e getter para poder pegar o Usuario logado
 
-Do UserDetails tiramos o login e utilizamos o metodo obterPorLogin do UsuarioService para retornar o *USUARIO LOGADO*
+No metodo de GetAuthorities, transformamos a lista de String (roles) na lista de SimpleGrantedAuthority para ser
+retornada corretamente como uma lista. E atraves deste metodo podemos AUTORIZAR o Usuario
 
-Apos isso, injetamos em ambos LivroService e AutorService SecurityService e antes de salvar, obtemos o UsuarioLogado e
-setamos ele antes de persistir o objeto
+GetDetails e GetPrincipal irao retornar o Usuario (mas podem retornar dados especificos), isAuthenticated tem que
+retornar true pois caso contrario NAO vai LOGAR
 
-Tambem alteramos em ambas classes LivroService e AutorService a propriedade idUsuario para o relacionamento Usuario com
-@JoinColumn com @ManyToOne
+Agora com nosso CustomAuthentication, independente do tipo da autentication utilizado vai carregar um
+CustomAuthentication pois vai carregar o **Usuario** que esta logado
+
+Todo -> Agora temos que dizer para o Spring usar Authentication, e que precisaremos criar um Authentication Provider
