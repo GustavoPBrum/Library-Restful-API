@@ -1,24 +1,5 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 129 - Criando nossa propria Authentication ------------>
+<------------  ------------>
 
-Criamos uma Authentication Customizada, o objeto central gerado em cadam uma das formas de autenticacao.
-
-Este objeto vai carregar **identificacao do usuario, quem esta logado da sessao de usuario**
-
-Arquitetos do Spring Security recomendam que carreguemos nossas PROPRIAS AUTHENTICATIONS
-
-Criamos o CustomAuthentication cujo implementa Authentication junto de todos os seus metodos que uma Authentication deve
-impor. Tambem carrega o obj Usuario como propriedade de construtor e getter para poder pegar o Usuario logado
-
-No metodo de GetAuthorities, transformamos a lista de String (roles) na lista de SimpleGrantedAuthority para ser
-retornada corretamente como uma lista. E atraves deste metodo podemos AUTORIZAR o Usuario
-
-GetDetails e GetPrincipal irao retornar o Usuario (mas podem retornar dados especificos), isAuthenticated tem que
-retornar true pois caso contrario NAO vai LOGAR
-
-Agora com nosso CustomAuthentication, independente do tipo da autentication utilizado vai carregar um
-CustomAuthentication pois vai carregar o **Usuario** que esta logado
-
-Todo -> Agora temos que dizer para o Spring usar Authentication, e que precisaremos criar um Authentication Provider

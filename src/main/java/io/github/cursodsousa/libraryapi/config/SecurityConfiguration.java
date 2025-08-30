@@ -59,7 +59,7 @@ public class SecurityConfiguration {
     }
 
     // Declaramos como Bean para ficar dentro da config do Spring Security
-    @Bean
+    // @Bean
     // Gera instancia do UserDetails
     public UserDetailsService userDetailsService(UsuarioService usuarioService) {
         // Nao podemos salvar a senha hardEncoded, precisa de alguma codificacao na senha para seguranca e comparacao
