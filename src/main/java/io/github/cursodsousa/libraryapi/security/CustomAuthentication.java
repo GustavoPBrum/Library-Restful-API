@@ -23,7 +23,7 @@ public class CustomAuthentication  implements Authentication {
     public Collection<GrantedAuthority> getAuthorities() {
         return this.usuario
                 .getRoles()  // Transformado uma lista de String, para uma lista de SimpleGrantedAuthority
-                .stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))// role = authority e add na lista
+                .stream().map(SimpleGrantedAuthority::new)// role = authority e add na lista
                 .collect(Collectors.toList());
     }
 

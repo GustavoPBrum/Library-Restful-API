@@ -30,6 +30,7 @@ public class LivroController implements GenericController {
     private final LivroMapper mapper;
 
     @PostMapping
+    // internamente por padrao o Spring Security transforma o .hasAnyHole "OPERADOR" para "ROLE_OPERADOR"
     @PreAuthorize("hasAnyRole('OPERADOR', 'GERENTE')")  // Se inserido em cima da classe, aplica para TODOS OS METODOS
     public ResponseEntity<Void> salvar(@RequestBody @Valid CadastroLivroDTO dto) {
         System.out.println("DTO recebido: " + dto);
