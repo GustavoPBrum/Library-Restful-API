@@ -18,3 +18,7 @@ Mas percebemos que o EMAIL eh o identificador unico do usuario, como uma CHAVE d
 
 Podemos utilizar o email como link nao so para o Google, mas para qualquer outro provedor de autenticacao como Facebook,
 GitHub...
+
+
+Todo -> Vamos adicionar o campo EMAIL dentro do nosso cadastro de USUARIO, para quando for localiza-lo vindo do Google
+Todo... usando o email na base para carregar ele (autenticado) como CustomAuthentication
