@@ -1,5 +1,20 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------  ------------>
+<------------ Aula 133 - Criando Estrategia para Unificar o Usuario do Google ------------>
 
+Nesta aula pensamos em uma forma de cadastrar e unificar de maneira mais ampla um usuario que possa vir do google,
+Facebook, github...
+
+Precisa-se habilitar o login social no formulario de Login, alem de fazer o usuario que vir autenticado do Google se
+transformar numa customAuthentication, que todos sejam integrados a nossa CustomAuthentication *UNIFICADA*
+
+A autenticacao enviada pelo Google eh Auth2 e nao um CustomAuthentication!!!
+
+Por nao possuir nenhum dado em comum desses enviados pelo Google que comparamos a nossa basse de dados, precisamos
+utilizar um outro dado ou ADICIONA-LO para poder ser utilizado
+
+Mas percebemos que o EMAIL eh o identificador unico do usuario, como uma CHAVE do gmail do Google
+
+Podemos utilizar o email como link nao so para o Google, mas para qualquer outro provedor de autenticacao como Facebook,
+GitHub...
