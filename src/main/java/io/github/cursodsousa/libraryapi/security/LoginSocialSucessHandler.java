@@ -37,7 +37,7 @@ public class LoginSocialSucessHandler extends SavedRequestAwareAuthenticationSuc
 
         Usuario usuario = usuarioService.obterPorEmail(email);
 
-        // Upercasting (e guardamos na ref que antes tinha OAuth2Authentication o nosso CustomAuthentication)
+        // Upcasting (e guardamos na ref que antes tinha OAuth2Authentication o nosso CustomAuthentication)
         authentication = new CustomAuthentication(usuario);
 
         // A Auth no contexto do Spring Security eh a 'authentication'(param) e quero mudar para CustomAuthentication

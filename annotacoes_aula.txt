@@ -1,6 +1,42 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula  -  ------------>
+<------------ Aula 135 - Customizacao Autenticacao Google ------------>
 
+.oauth2Login(oauth2 -> {
+// Quando autenticado com sucesso (no google), chama a classe destacada
+                    oauth2.successHandler(sucessHandler);
+                    })
 
+Criamos a classe LoginSocialSucessHandler com @Component e que estende SavedRequestAwareAuthenticationSuccessHandler que
+eh uma implementacao de AuthenticationSucessHandler
+
+Vamos sobrescrever o metodo onAuthenticationSucess cujo os parametros sao: request, response e authentication
+
+Injetamos no SecurityFilterChain (SecurityConfiguration) a classe LoginSocialSucessHandler -> sucessHandler
+
+Voltando para classe LoginSocialSucessHandler, no metodo onAuthenticationSucess pegamos a authentication (generico)
+ e fazemos o downcasting para OAuth2AuthenticationToken
+
+O .getPrincipal() de OAuth2AuthenticationToken retorna um OAuth2User (usuario Auth2), cujo esse OAuth2User podemos
+acessar o email com .getAttribute e guardamos na var 'email':
+String email = oAuth2User.getAttribute("email");
+
+Com isso injetamos UsuarioService com o QueryMethod obterPorEmail ja criado para entao buscaro usuario pelo email
+
+Criando o usuario (Usuario) com o resultado desse metodo, e depois instanciando nossa customAuthentication com:
+new customAuthentication(usuario)
+
+A Auth no contexto do Spring Security eh a 'authentication'(param) e quero mudar para CustomAuthentication
+SecurityContextHolder.getContext().setAuthentication(customAuthentication);
+
+O 'super' da continuidade para este request (passa para frente)
+super.onAuthenticationSuccess(request, response, customAuthentication);
+
+**Recebemos a authentication OAuth2AuthenticationToken, depois instanciamos e guardamos a referencia do
+customAuthentication**
+
+Resumo ->> pegamos a auth do Google, pegou atributo email, criamos no service o metodo que busca pelo email, modificamos
+a auth para customAuthentication, add a custom no contexto e demos continuidade na requisicao
+
+Todo -> Usaremos o formLogin que foi criado desde o inicio e configuraremos auth do Google no proprio formLogin
