@@ -1,5 +1,6 @@
 package io.github.cursodsousa.libraryapi.controller;
 
+import io.github.cursodsousa.libraryapi.security.CustomAuthentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,10 @@ public class LoginViewController {
     @GetMapping("/")
     @ResponseBody  // Pega o retorno (String) e coloca no corpo da resposta nao tendo que retornar uma pagina WEB
     public String paginaHome(Authentication authentication){
+        if(authentication instanceof CustomAuthentication customAuth) {
+            System.out.println(customAuth.getUsuario());
+        }
+
         return "Ola " + authentication.getName();
     }
 }

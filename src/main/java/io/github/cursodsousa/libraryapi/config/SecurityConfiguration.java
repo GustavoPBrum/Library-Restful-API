@@ -1,6 +1,7 @@
 package io.github.cursodsousa.libraryapi.config;
 
 import io.github.cursodsousa.libraryapi.security.CustomUserDetailsService;
+import io.github.cursodsousa.libraryapi.security.LoginSocialSucessHandler;
 import io.github.cursodsousa.libraryapi.service.UsuarioService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,9 @@ public class SecurityConfiguration {
     @Bean
     // Declarado esse SecurityFilterChain (bean), ele sobrescreve o SecurityFilterChain padrao (que habilitou o form de
     // login, autenticacao Basic...)
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            LoginSocialSucessHandler sucessHandler) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)  // Permite que outras app facam uma REQUISICAO pro sistema
                 // autenticacao via browser
@@ -49,7 +52,10 @@ public class SecurityConfiguration {
 
                     // Qualquer regra abaixo do anyRequest sera ignorada!!!
                 })
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login(oauth2 -> {
+                    // Quando autenticado com sucesso, chama a classe destacada
+                    oauth2.successHandler(sucessHandler);
+                })
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
 
