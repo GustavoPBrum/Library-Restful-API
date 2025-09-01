@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component  // Bean gerenciado pelo Spring Context
 @RequiredArgsConstructor
+// Atende as autenticacoes criadas, Basic e form login
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private final UsuarioService usuarioService;
@@ -46,7 +47,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     }
 
     @Override
-    // UsernamePasswordAuthenticationToken -> que sera passado par ao metodo authenticate
+    // UsernamePasswordAuthenticationToken -> que sera passado para o metodo authenticate
     public boolean supports(Class<?> authentication) {
         // Tipo de autenticacao suportada, no caso quando usuario digita usuario e a senha
         // Tanto no Basic quanto no form de login, vai criar uma instancia de *UsernamePasswordAuthenticationToken*
