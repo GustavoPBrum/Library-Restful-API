@@ -12,5 +12,6 @@ Agora com o CustomAuthentication criado e personalizado,
 Independente do tipo de autenticacao feita sera produzida uma instancia de CustomAuthentication pois ela vai carregar o
 usuario que esta logado
 
-Criado a Authentication, temos de dizer ao Spring para usa-la e para isso temos de criar um AuthenticationProvider e
-dizer ao Spring para usar a Authentication criada
+Criado a Authentication, temos de dizer ao Spring para usa-la e para isso temos de criar um AuthenticationProvider
+
+Todo -> Criar um AuthenticationProvider e dizer ao Spring para utilizar o nosso CustomAuthentication 
