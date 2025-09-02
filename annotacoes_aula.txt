@@ -14,4 +14,4 @@ usuario que esta logado
 
 Criado a Authentication, temos de dizer ao Spring para usa-la e para isso temos de criar um AuthenticationProvider
 
-Todo -> Criar um AuthenticationProvider e dizer ao Spring para utilizar o nosso CustomAuthentication 
+Todo -> Criar um AuthenticationProvider e dizer ao Spring para utilizar o nosso CustomAuthentication
