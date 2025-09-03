@@ -1,17 +1,4 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 129 - Relembrando ------------>
-
-A authentication criada ja vai carregar o proprio usuario
-
-Arquitetos do Spring Security recomendam que trabalhemos com nossas proprias Authentications
-
-Agora com o CustomAuthentication criado e personalizado,
-
-Independente do tipo de autenticacao feita sera produzida uma instancia de CustomAuthentication pois ela vai carregar o
-usuario que esta logado
-
-Criado a Authentication, temos de dizer ao Spring para usa-la e para isso temos de criar um AuthenticationProvider
-
-Todo -> Criar um AuthenticationProvider e dizer ao Spring para utilizar o nosso CustomAuthentication
+<------------ Aula 130 - AuthenticationProvider Customizado ------------>

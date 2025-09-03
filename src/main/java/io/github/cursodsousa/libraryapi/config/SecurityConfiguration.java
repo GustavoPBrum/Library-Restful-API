@@ -10,10 +10,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -25,9 +27,7 @@ public class SecurityConfiguration {
     @Bean
     // Declarado esse SecurityFilterChain (bean), ele sobrescreve o SecurityFilterChain padrao (que habilitou o form de
     // login, autenticacao Basic...)
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http,
-            LoginSocialSucessHandler sucessHandler) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)  // Permite que outras app facam uma REQUISICAO pro sistema
                 // autenticacao via browser
@@ -48,10 +48,7 @@ public class SecurityConfiguration {
 
                     // Qualquer regra abaixo do anyRequest sera ignorada!!!
                 })
-                .oauth2Login(oauth2 -> {
-                    // Quando autenticado com sucesso, chama a classe destacada
-                    oauth2.successHandler(sucessHandler);
-                })
+                .oauth2Login(Customizer.withDefaults())
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
 
@@ -83,11 +80,5 @@ public class SecurityConfiguration {
 //        return new InMemoryUserDetailsManager(user1, user2);
 
         return new CustomUserDetailsService(usuarioService);
-    }
-
-    @Bean
-    public GrantedAuthorityDefaults grantedAuthorityDefaults() {
-        // Ignora o prefixo "ROLE_" que o Spring Security verifica nas authorities, permitindo funcionar sem prefixo
-        return new GrantedAuthorityDefaults("");
     }
 }
