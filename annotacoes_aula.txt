@@ -2,3 +2,28 @@
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
 <------------ Aula 130 - AuthenticationProvider Customizado ------------>
+
+Criamos nossa CustomAuthenticationProvider (que implementa AuthenticationProvider), com metodos autenticate e supports
+
+Injetamos o usuarioService para obter login e PasswordEncoder para obter a senha
+
+Autenticate -> fazemos o que o Spring faz por de baixo dos panos, obtemos login e senhaDigitada (getCredentials),
+apos isso comparamos o usuario encontrado pelo login (se true), comparamos a senha (encoder) e retornamos em caso de
+senha true:
+
+PROVEMOS o CustomAuthentication(usuarioEncontrado) -> (usuarioEncontrado como parametro), provendo authentication para o
+contexto Spring
+
+supports -> diz o tipo de Authentication que suporta o metodo: Criar um objeto a partir do login e senha, e passara o
+objeto para o nosso Provider verificar se eh suportado
+
+**Desabilitamos o @Bean UserDetailsService!!! **
+
+Dessa forma o Spring vai definir o nosso @Component AuthenticationProvider como provider da aplicacao
+
+No caso do FORBIDDEN do postman: Spring trabalha com prefix chamado "ROLE_...." sendo adicionados em TODAS, nao sendo o
+que determinamos (apenas "GERENTE")
+
+Solucao temporaria!!!:
+.stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+
