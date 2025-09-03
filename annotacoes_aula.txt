@@ -27,3 +27,4 @@ que determinamos (apenas "GERENTE")
 Solucao temporaria!!!:
 .stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
 
+Todo -> Uma nova forma de resolver na proxima aula sem ter de alterar o retorno do nosso role no CustomAuthentication
