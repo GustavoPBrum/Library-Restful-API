@@ -38,6 +38,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         boolean senhasBatem = encoder.matches(senhaDigitada, senhaCriptografada);
 
         if(senhasBatem) {
+            // Usuario autenticado
             return new CustomAuthentication(usuarioEncontrado);
         }
 

@@ -1,11 +1,5 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 131 - Eliminando Prefixo Role ------------>
+<------------ Aula 132 - Security Service ------------>
 
-Em SecurityConfiguration criamos o método GrantedAuthorityDefaults e definimos como:
-
-// Remove o prefixo "ROLE_" que o Spring coloca nas roles
-return new GrantedAuthorityDefaults("");
-
-Assim sendo sem ter de adicionar o prefixo, criamos apenas um SimpleGrantedAuthority comum com o role.
