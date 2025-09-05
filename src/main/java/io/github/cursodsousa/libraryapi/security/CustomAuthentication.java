@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Getter // Pegar o usuario que esta logado
+// Indenpendente do tipo de Authentication utilizada, Google, FormLogin, produzirá uma CustomAuthentication por carregar
+// o usuario
 public class CustomAuthentication implements Authentication {
 
     // Quando criar essa Authentication, passar o usuario autenticado
@@ -60,3 +62,4 @@ public class CustomAuthentication implements Authentication {
         return usuario.getLogin();
     }
 }
+

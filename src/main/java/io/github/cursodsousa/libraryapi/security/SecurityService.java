@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 // Bean -> Um objeto gerenciado pelo Spring (vai criar a instancia, cuidar do ciclo de vida, das dependencias, unica
 // instancia em toda aplicacao (singleton) e permite ser injetado)
 @RequiredArgsConstructor
-public class SecurityService {
+public class  SecurityService {
 
     private final UsuarioService usuarioService;
 
