@@ -15,13 +15,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class  SecurityService {
 
-    private final UsuarioService usuarioService;
-
     public Usuario obterUsuarioLogado() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        // Apenas Authentications cujo seja nossa CustomAuthentication que possui o Usuario não necessitando ir no BD
         if(authentication instanceof CustomAuthentication customAuth) {
-            // Ficou mais facil obter o usuario logado, pois CustomAuthentication possui o nosso usuario autenticado
             return customAuth.getUsuario();
         }
 
