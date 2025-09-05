@@ -28,7 +28,9 @@ public class CustomAuthentication implements Authentication {
                 .usuario
                 .getRoles()
                 // role(string) -> SimpleGrantedAuthority (interface que retorna a Authority)
-                .stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                .stream()
+                //.map(role -> new SimpleGrantedAuthority(role))
+                .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
 
