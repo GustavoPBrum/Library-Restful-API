@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 // instancia em toda aplicacao (singleton) e permite ser injetado)
 public class  SecurityService {
 
-
     // Método que obtém usuario logado apenas de CustomAuthentication
     public Usuario obterUsuarioLogado() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

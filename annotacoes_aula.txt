@@ -9,12 +9,12 @@ Nesta aula fizemos alteração da Classe Security Service no método obterUsuari
 contexto Spring.
 
 E fazia uso da Authentication para gerar o UserDetails através de Downcasting e então obter o login de Usuario para
-poder chamar a função de obterPorLogin do Security Service.
+poder chamar a função de obterPorLogin do usuario Service.
 
 ------------ Alterações ------------
 
 Com CustomAuthentication criado, precisa-se alterar o obterUsuarioLogado para ele obter o usuario do local correto que
 seria CustomAuthentication e não mais UserDetails
 
-Agora o obterPorLogin apenas retorna o Usuario cujo seja uma instância de CustomAuthentication e fica mais fácil pegar o
-Usuario pois o CustomAuth já possui o Usuario, não necessitando ir no BD
+Agora obterUsuarioLogado retorna apenas o Usuario cujo seja uma instância de CustomAuthentication e fica mais fácil
+pegar o Usuario pois o CustomAuth já possui o Usuario, não necessitando ir no BD
