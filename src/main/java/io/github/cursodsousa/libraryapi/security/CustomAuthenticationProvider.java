@@ -49,8 +49,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     }
 
     @Override
+    // Tipo de Authentication suportado pelo CustomAuthenticationProvider
     public boolean supports(Class<?> authentication) {
-        // Criar um objeto a partir do login e senha, e passara o objeto para o nosso Provider verificar se eh suportado
+        // Cria um objeto a partir do login e senha (Seja HTTPBasic, FormLogin, Google) e passara o objeto
+        // UsernamePasswordAuthenticationToken para o nosso Provider verificar se eh 'isAssignableFrom'
         return authentication.isAssignableFrom(UsernamePasswordAuthenticationToken.class);
     }
 }

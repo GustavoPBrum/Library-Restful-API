@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 // o usuario
 public class CustomAuthentication implements Authentication {
 
-    // Quando criar essa Authentication, passar o usuario autenticado
+    // Quando criar essa Authentication, passar o usuario como parâmetro
     private final Usuario usuario;
 
     @Override
