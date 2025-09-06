@@ -1,14 +1,32 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------  ------------>
+<------------ Aula 134 - Adicionando campo Email no cadastro de Usuario ------------>
 
-Precisamos fazer com que o usuário vindo do Google consiga transformar em uma CustomAuthentication.
+------- O que foi Feito -------
 
-Independente do tipo de Authentication que estejamos provendo no sistema, terá de atender ao CustomAuthentication
+Dropada e criada uma nova tabela de Usuario com o campo email presente (mostrado também a opção de alterar uma tabela
+já existente)
 
-Não temos nenhum dado em comum com a autenticação do Google, sendo necessário adicionar o campo "email" no nosso BD
+Adicionamos na Entidade Usuario o campo Email, assim como no UsuarioDTO. Pois tanto o DTO e Entidade usarão do email.
 
-Sendo o email o nosso link tanto com o Google quanto qualquer outro provedor de autenticação (Facebook, Github)
+No UsuarioController, usamos a validação '@Valid' para salvar o UsuarioDTO (transformado em Entity)
 
-todo: add campo "email" no cadastro de USUARIO, para localiza-lo quando vir do Google
+Também no UsuarioDTO usamos das annotations @Email e @NotBlank nos campos essenciais do nosso DTO
+
+O Mapper do Map Struct exige que tem que estar sempre compilando (MVN Clean + Install) quando há alteração ou no DTO ou
+na Entidade
+
+
+------- A ser Feito -------
+
+CustomAuthenticationProvider atende as autenticações que criamos (Basic e Login)
+
+Já a Authentication vinda do Google já está pronta,a autenticada internamente por eles pelo login e senha
+
+Ou seja, o Google passa o USUARIO que se autenticou
+
+SS -> Spring Security
+
+todo: utilizar recurso do SS que recebe o dado do login com sucesso, recebe a Authentication pra pegar os dados do
+todo: ..usuario e transformar na customAuthentication
