@@ -1,20 +1,14 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 132 - Security Service ------------>
+<------------  ------------>
 
------------- Contexto ------------
+Precisamos fazer com que o usuário vindo do Google consiga transformar em uma CustomAuthentication.
 
-Nesta aula fizemos alteração da Classe Security Service no método obterUsuarioLogado onde ele pegava a Authentication do
-contexto Spring.
+Independente do tipo de Authentication que estejamos provendo no sistema, terá de atender ao CustomAuthentication
 
-E fazia uso da Authentication para gerar o UserDetails através de Downcasting e então obter o login de Usuario para
-poder chamar a função de obterPorLogin do usuario Service.
+Não temos nenhum dado em comum com a autenticação do Google, sendo necessário adicionar o campo "email" no nosso BD
 
------------- Alterações ------------
+Sendo o email o nosso link tanto com o Google quanto qualquer outro provedor de autenticação (Facebook, Github)
 
-Com CustomAuthentication criado, precisa-se alterar o obterUsuarioLogado para ele obter o usuario do local correto que
-seria CustomAuthentication e não mais UserDetails
-
-Agora obterUsuarioLogado retorna apenas o Usuario cujo seja uma instância de CustomAuthentication e fica mais fácil
-pegar o Usuario pois o CustomAuth já possui o Usuario, não necessitando ir no BD
+todo: add campo "email" no cadastro de USUARIO, para localiza-lo quando vir do Google
