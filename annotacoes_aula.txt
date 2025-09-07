@@ -44,3 +44,6 @@ Agora no método onAuthenticationSuccess:
 
 ** Com isso TODAS as minhas Authentication são instâncias de CustomAuthentication**
 
+-------- O que FAZER --------
+
+todo: utilizar agora formLogin e colocar o link para poder logar com o Google
