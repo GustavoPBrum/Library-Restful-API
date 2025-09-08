@@ -35,10 +35,9 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)  // Permite que outras app facam uma REQUISICAO pro sistema
                 // autenticacao via browser
-//                .formLogin(configurer -> {  // Dizendo que a page de login eh esta
-//                    configurer.loginPage("/login");
-//                })
-                .formLogin(Customizer.withDefaults())
+                .formLogin(configurer -> {  // Dizendo que a page de login eh esta
+                    configurer.loginPage("/login");
+                })
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> {
                     // permite todos acessar /login sem estarem autenticados
@@ -54,7 +53,9 @@ public class SecurityConfiguration {
                 })
                 // Quando fizer uma autenticação com sucesso, chama a classe informada
                 .oauth2Login(oauth2 ->
-                        oauth2.successHandler(successHandler))
+                        oauth2
+                                .loginPage("/login")
+                                .successHandler(successHandler))
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
 
