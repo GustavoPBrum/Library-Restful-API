@@ -1,4 +1,44 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula  -  ------------>
+<------------ Aula 139 - Introdução Protocolo OAuth2 ------------ >
+
+Fonte: https://whimsical.com/oauth2-7h8DuqyQva4qMvK8geo4BX
+
+------------ O que é OAuth2? ------------
+
+-> Protocolo de Autorização que permite que aplicativos acessem recursos de um *Usuario* em outros serviços sem que o
+Usuario precise compartilhar suas *credenciais*
+
+OAuth2 utiliza os *TOKENS* de acesso!!
+
+Usuario se autentica uma vez, recebe o token e esse token tem uma duração. Cujo que representa a *sessão* e
+*autorização* que o Usuario tem para fazer as requisições.
+
+------------ Explicação Diagrama ------------
+
+1 -> Usuario acessa a aplicação
+
+2 -> Aplicação solicita autenticação para *Authorization Server*
+
+*Authorization Server* -> que seria o Guarda do Prédio
+
+3 -> Usuario realiza Login
+
+Login é realizado no Authorization Server, não na aplicação!!
+
+4 -> Emite Token
+
+Token que contem as informações do Usuario (nome, função...)
+
+5 -> Acessa a API
+
+------------ Considerações ------------
+
+OAuth2 possui vários fluxos, que dependem do tipo de aplicação, client.
+
+Documentação: https://oauth.net/2/
+
+RFC do OAuth2 (documento que serve para especificar padrões, protocolos e diretrizes da internet e sistemas de rede)
+
+OAuth2 não é uma TECNOLOGIA, é um FRAMEWORK, um protocolo de AUTENTICAÇÃO sendo independente de linguagem
