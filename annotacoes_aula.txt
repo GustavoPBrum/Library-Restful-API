@@ -1,23 +1,81 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 140 - Componentes OAuth2 ------------ >
+<------------ Aula 140 - Grant Types - Fluxos de Autenticação ------------ >
 
 Fonte: https://whimsical.com/oauth2-7h8DuqyQva4qMvK8geo4BX
 
------------- Conhecendo os Componentes ------------
+------------ O que é? ------------
 
-Authorization Server -> Autentica e Identifica o Usuario e o Client (ambos precisam estar cadastrados e registrados),
-possui a base de dados dos usuarios e clients
+Formas que o OAuth2 define para você se autenticar.
 
-Resource Server -> Dados que serão acessados (API), pode ter as regras de acesso (roles...)
+------------ Password Flow (Deprecated) ------------
 
-Usuario -> Quem está acessando o sistema
+1 -> Digita Credenciais no próprio *CLIENT*
 
-Client -> Sistema cadastrado que irá requisitar os dados
+Problema de segurança pois o Client pode fazer o QUE QUISER com as credenciais do usuario, sendo esse Grant Type cair
+em desuso (OAuth1)
 
------------- Geral ------------
+-Client-
 
-Usuario acesa o Resource Server através do Client, Client se precisar autenticar vai pedir pro Authorization Server
-autenticar o Usuario, Usuario esse que vai se autenticar e que o TOKEN será emitido para o Client acessar os dados do
-Resource Server
+2 -> Solicita Token
+
+-Authorization Server-
+
+3 -> Emite Token
+
+-Client-
+
+4 -> Realiza as requisições
+
+-Resource Server-
+
+------------ Authorization Code (Um dos mais seguros e Utilizados!!) ------------
+
+--- Passo 1 ---
+
+1 -> Acessa o sistema
+
+-Client-
+
+2 -> Redireciona pra autenticar
+
+-Authorization Server-
+
+3 -> Se autentica
+
+4 -> Emite Código de autorização para CONSEGUIR o token
+
+-Client-
+
+--- Passo 2 ---
+
+-Client-
+
+1 -> Solicita Token com código de autorização
+
+-Authorization Server-
+
+2 -> Emite Token
+
+-Client-
+
+3 -> Realiza as requisições
+
+-Resource Server-
+
+------------ Client Credentials (Comunicação entre API's/Sistemas) ------------
+
+Utilizado toda vez que for comunicar uma API com outra (sem usuario) ou sistema acessando outro sistema (ex: Postman).
+
+1 -> Solicita Token (id e secret apenas)
+
+-Authorization Server-
+
+2 -> Emite Token (com scopes, no caso permissões)
+
+-Client-
+
+3 -> Realiza as requisições
+
+-Resource Server-
