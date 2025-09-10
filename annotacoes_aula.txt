@@ -39,4 +39,4 @@ SecurityFilterChain, se achar implementação de RegisteredClientRepository o Au
 pegar a implementação CustomRegisteredClientRepository e buscar pelo método findByClientId (buscando na base e
 retornando o RegisteredClient).
 
-todo: colocar config de token settings global e client settings global
+todo: colocar config de token settings global e client settings global (visando Authorization Server e Resource Server)
