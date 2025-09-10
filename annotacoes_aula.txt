@@ -36,6 +36,7 @@ Passado também no builder os GrantTypes utilizados
 
 IMPORTANTE: por ter sido adicionado como @Component, não precisa ser registrado em nenhum outro local como
 SecurityFilterChain, se achar implementação de RegisteredClientRepository o Authorization Server ja vai automaticamente
-pegar a implementação e buscar na base retornando nosso RegisteredClient!!!
+pegar a implementação CustomRegisteredClientRepository e buscar pelo método findByClientId (buscando na base e
+retornando o RegisteredClient).
 
 todo: colocar config de token settings global e client settings global
