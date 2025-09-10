@@ -1,81 +1,14 @@
 ---------- Spring Security ----------
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 
-<------------ Aula 140 - Grant Types - Fluxos de Autenticação ------------ >
+<------------ Aula 142 - Configurando Projeto OAuth2 ------------ >
 
-Fonte: https://whimsical.com/oauth2-7h8DuqyQva4qMvK8geo4BX
+https://docs.spring.io/spring-authorization-server/reference/configuration-model.html
 
------------- O que é? ------------
+O projeto será transformado tanto em Authorization Server (que identifica e autentica Usuario e Client), como também
+Resource Server (onde fica a API)
 
-Formas que o OAuth2 define para você se autenticar.
+IMPORTANTE: Mais pra frente criaremos uma aplicação apenas para Resource Server (API) que usará essa Authorization
+Server
 
------------- Password Flow (Deprecated) ------------
-
-1 -> Digita Credenciais no próprio *CLIENT*
-
-Problema de segurança pois o Client pode fazer o QUE QUISER com as credenciais do usuario, sendo esse Grant Type cair
-em desuso (OAuth1)
-
--Client-
-
-2 -> Solicita Token
-
--Authorization Server-
-
-3 -> Emite Token
-
--Client-
-
-4 -> Realiza as requisições
-
--Resource Server-
-
------------- Authorization Code (Um dos mais seguros e Utilizados!!) ------------
-
---- Passo 1 ---
-
-1 -> Acessa o sistema
-
--Client-
-
-2 -> Redireciona pra autenticar
-
--Authorization Server-
-
-3 -> Se autentica
-
-4 -> Emite Código de autorização para CONSEGUIR o token
-
--Client-
-
---- Passo 2 ---
-
--Client-
-
-1 -> Solicita Token com código de autorização
-
--Authorization Server-
-
-2 -> Emite Token
-
--Client-
-
-3 -> Realiza as requisições
-
--Resource Server-
-
------------- Client Credentials (Comunicação entre API's/Sistemas) ------------
-
-Utilizado toda vez que for comunicar uma API com outra (sem usuario) ou sistema acessando outro sistema (ex: Postman).
-
-1 -> Solicita Token (id e secret apenas)
-
--Authorization Server-
-
-2 -> Emite Token (com scopes, no caso permissões)
-
--Client-
-
-3 -> Realiza as requisições
-
--Resource Server-
+todo: registrar os CLIENTS que vão poder acessar o Authorization Server
