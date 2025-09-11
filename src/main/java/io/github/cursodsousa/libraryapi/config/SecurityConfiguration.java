@@ -44,7 +44,7 @@ public class SecurityConfiguration {
                     authorize.requestMatchers("/login/**").permitAll();
 
                     // Permite todos cadastrarem seus usuarios.
-                    authorize.requestMatchers(HttpMethod.POST, "/usuarios/**" ).permitAll();
+                    authorize.requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll();
 
                     // Para alem das requisicoes acima, deve estar pelo menos autenticado (se nao for user, nem admin)
                     authorize.anyRequest().authenticated(); // Qualquer Request pra essa API TEM que estar Autenticado
@@ -59,39 +59,4 @@ public class SecurityConfiguration {
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        // Gera um hash diferente para cada vez que criptografar (mesmo que seja a mesma senha)
-        return new BCryptPasswordEncoder(10);  // numero de vezes que vai passar em cima do BCript
-    }
-
-    // Declaramos como Bean para ficar dentro da config do Spring Security
-    // @Bean
-    // Gera instancia do UserDetails
-    public UserDetailsService userDetailsService(UsuarioService usuarioService) {
-        // Nao podemos salvar a senha hardEncoded, precisa de alguma codificacao na senha para seguranca e comparacao
-//        UserDetails user1 = User.builder()
-//                .username("usuario1")
-//                .password(encoder.encode("123"))
-//                .roles("USER")  // Roles geralmente em caixa alta
-//                .build();
-//
-//        // Os dados do Usuario, Authentication eh o que fica no contexto do Spring Security
-//        UserDetails user2 = User.builder()
-//                .username("admin")
-//                .password(encoder.encode("321"))
-//                .roles("ADMIN")  // Roles geralmente em caixa alta
-//                .build();
-//
-//        // Nao retorna a senha aleatoria pois agora temos um repositorio (EM MEMORIA) no qual ele busca os usuarios
-//        return new InMemoryUserDetailsManager(user1, user2);
-
-        return new CustomUserDetailsService(usuarioService);
-    }
-
-    @Bean
-    public GrantedAuthorityDefaults grantedAuthorityDefaults() {
-        // Remove o prefixo "ROLE_" que o Spring coloca nas roles
-        return new GrantedAuthorityDefaults("");
-    }
 }

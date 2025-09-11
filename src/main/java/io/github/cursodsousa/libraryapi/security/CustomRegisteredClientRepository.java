@@ -10,6 +10,8 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.stereotype.Component;
 
+
+// Repositorio de Clients que serão registrados para poderem utilizar o Authorization Server
 @Component
 @RequiredArgsConstructor
 // Parte que conecta com OAuth2
