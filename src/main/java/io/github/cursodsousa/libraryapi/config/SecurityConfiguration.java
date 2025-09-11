@@ -17,13 +17,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity  // Por ser uma config de seguranca
 @EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)  // Habilita para fazer nos controllers (permissoes)
-public class SecurityConfiguration {
+public class SecurityConfiguration {  // Nosso Resource Server!!!
 
     // Quando declarado esse Bean, desabilita o @Bean padrao e passa a atender as config deste Bean
     @Bean
@@ -56,7 +58,30 @@ public class SecurityConfiguration {
                         oauth2
                                 .loginPage("/login")
                                 .successHandler(successHandler))
+
+                .oauth2ResourceServer(oauth2RS -> oauth2RS.jwt(Customizer.withDefaults()))  // JWT pra validar usuario
+
                 .build();  // Para criar um SecurityFilterChain apartir do htpp, preciso chamar o *.build*
     }
 
+
+    // Configura o prefixo 'ROLE'
+    @Bean
+    public GrantedAuthorityDefaults grantedAuthorityDefaults() {
+        // Remove o prefixo "ROLE_" que o Spring coloca nas roles
+        return new GrantedAuthorityDefaults("");
+    }
+
+    // Configura no Tokent JWT, o prefixo 'SCOPE'
+    @Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter(){
+        var authoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        authoritiesConverter.setAuthorityPrefix("");
+
+        // Obj a retornar
+        var converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+
+        return converter;
+    }
 }

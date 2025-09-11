@@ -2,41 +2,5 @@
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 https://docs.spring.io/spring-authorization-server/reference/configuration-model.html
 
-<------------ Aula 144 - Criando RegisteredClientRepository Customizado ------------ >
+<------------ Aula 147 - Configurando Resource Server ------------ >
 
-Implementamos um repositório de Clients registrados, que retorna RegisteredClients pro Authorization Server.
-
-Criado a classe CustomRegisteredClientRepository e implementado RegisteredClientRepository junto de seus metodos
-
-Também adicionado a classe as annotations @Component (pra ser gerenciado pelo Contexto Spring), @RequiredArgsConstructor,
-injetado a classe ClientService
-
-Chamamos o Client que está no banco com clientService.obterPorClientId(clientId), também verificando se for passado um
-clientId nulo
-
-Utilizamos do builder dele abaixo:
-
-return RegisteredClient
-                .withId(client.getId().toString())
-                .clientId(client.getClientId())
-                .clientSecret(client.getClientSecret())
-                .redirectUri(client.getRedirectURI())
-                .scope(client.getScope())
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .build();
-
-.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE) -> seria passar o clientId e clientSecret onde seria
-o login e senha do basic Auth
-
-Passado também no builder os GrantTypes utilizados
-.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-
-IMPORTANTE: por ter sido adicionado como @Component, não precisa ser registrado em nenhum outro local como
-SecurityFilterChain, se achar implementação de RegisteredClientRepository o Authorization Server ja vai automaticamente
-pegar a implementação CustomRegisteredClientRepository e buscar pelo método findByClientId (buscando na base e
-retornando o RegisteredClient).
-
-todo: colocar config de token settings global e client settings global (visando Authorization Server e Resource Server)
