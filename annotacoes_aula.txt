@@ -4,3 +4,25 @@ https://docs.spring.io/spring-authorization-server/reference/configuration-model
 
 <------------ Aula 147 - Configurando Resource Server ------------ >
 
+SecurityConfiguration == Resource Server
+
+Habilitamos o Resource Server com:
+
+.oauth2ResourceServer(oauth2RS -> oauth2RS.jwt(Customizer.withDefaults()))
+Basicamente dizemos que iremos usar o JWT para validar o Usuario
+
+Adicionamos um Bean para configurar do Token o Scope(prefixo):
+
+@Bean
+    public JwtAuthenticationConverter jwtAuthenticationConverter(){
+        var authoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        authoritiesConverter.setAuthorityPrefix("");
+
+        // Obj a retornar
+        var converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+
+        return converter;
+    }
+
+todo: entender na próxima aula como funciona o Token JWT, para depois fazer a configuração do Token no Authorization Server Configuration
