@@ -2,27 +2,29 @@
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 https://docs.spring.io/spring-authorization-server/reference/configuration-model.html
 
-<------------ Aula 147 - Configurando Resource Server ------------ >
+<------------ Aula 148 - O que é um Token JWT? ------------ >
 
-SecurityConfiguration == Resource Server
+JWT -> JSON WEB TOKEN, para trabalhar com aplicações WEB
 
-Habilitamos o Resource Server com:
+OAuth2 SÓ DEFINE que irá utilizar TOKENS!!  Token mais utilizado é o JTW!!!
 
-.oauth2ResourceServer(oauth2RS -> oauth2RS.jwt(Customizer.withDefaults()))
-Basicamente dizemos que iremos usar o JWT para validar o Usuario
+Podemos ter Token Opacos.
 
-Adicionamos um Bean para configurar do Token o Scope(prefixo):
+Token JWT -> Carrega informações
 
-@Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter(){
-        var authoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        authoritiesConverter.setAuthorityPrefix("");
+Token Opacos -> Um Hash que não diz nada!!! Apenas letras e números (valida apenas se existe ou não o Token no servidor)
 
-        // Obj a retornar
-        var converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+------------ Anatomia Token JWT ------------
 
-        return converter;
-    }
+Possui 3 partes, Header, Payload(corpo) e Verify Signature
 
-todo: entender na próxima aula como funciona o Token JWT, para depois fazer a configuração do Token no Authorization Server Configuration
+Header: Possui alguns meta dados, tipo do Token, algoritmo utilizado para gerar a assinatura...
+
+Payload: Carrega as informações customizadas! sub (subject, geralmente ID do usuario, identificação do usuario), name,
+iat (Issued at, quando foi emitido o Token)
+
+**Informações colocadas no Payload são chamadas de CLAIMS**
+
+Claims do Token -->> Informações do Token
+
+Verify Signature -> Parte que não conseguimos descriptografar sem a chave que foi usada para assinar este Token

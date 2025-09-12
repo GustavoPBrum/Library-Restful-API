@@ -72,7 +72,7 @@ public class SecurityConfiguration {  // Nosso Resource Server!!!
         return new GrantedAuthorityDefaults("");
     }
 
-    // Configura no Tokent JWT, o prefixo 'SCOPE'
+    // Configura no Token JWT, o prefixo 'SCOPE' será removido
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter(){
         var authoritiesConverter = new JwtGrantedAuthoritiesConverter();
