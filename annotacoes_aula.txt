@@ -4,3 +4,16 @@ https://docs.spring.io/spring-authorization-server/reference/configuration-model
 
 <------------ Aula 149 - Configurando Token JWK e JWT no Authorization Server ------------ >
 
+------------ RSA -  O que é? ------------
+
+Tipo chave Criptográfica utilizado em criptografia assimétrica. Método de criptografica onde possui duas chaves
+diferentes, pública e privada.
+
+Componentes RSA:
+Chave pública -> criptografar os dados e pode ser compartilhada publicamente sem comprometer a segurança
+
+Chave privada -> É usada para descriptografar dados que foram criptografados pela chave PÚBLICA. Tem que ser mantida em
+segredo, só quem sabe a chave privada é o Servidor(Authorization Server), usada para descriptografar o Token e validar
+ele.
+
+todo: Próxima aula aprendendo a se autenticar com o JWT usando ele
