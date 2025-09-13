@@ -2,29 +2,18 @@
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 https://docs.spring.io/spring-authorization-server/reference/configuration-model.html
 
-<------------ Aula 148 - O que é um Token JWT? ------------ >
+<------------ Aula 149 - Configurando Token JWK e JWT no Authorization Server ------------ >
 
-JWT -> JSON WEB TOKEN, para trabalhar com aplicações WEB
+------------ RSA, o que é? ------------
 
-OAuth2 SÓ DEFINE que irá utilizar TOKENS!!  Token mais utilizado é o JTW!!!
+Tipo chave Criptográfica utilizado em criptografia assimétrica. Método de criptografica onde possui duas chaves
+diferentes, pública e privada.
 
-Podemos ter Token Opacos.
+Componentes RSA:
+Chave pública -> criptografar os dados e pode ser compartilhada publicamente sem comprometer a segurança
 
-Token JWT -> Carrega informações
+Chave privada -> É usada para descriptografar dados que foram criptografados pela chave PÚBLICA. Tem que ser mantida em
+segredo, só quem sabe a chave privada é o Servidor(Authorization Server), usada para descriptografar o Token e validar
+ele.
 
-Token Opacos -> Um Hash que não diz nada!!! Apenas letras e números (valida apenas se existe ou não o Token no servidor)
-
------------- Anatomia Token JWT ------------
-
-Possui 3 partes, Header, Payload(corpo) e Verify Signature
-
-Header: Possui alguns meta dados, tipo do Token, algoritmo utilizado para gerar a assinatura...
-
-Payload: Carrega as informações customizadas! sub (subject, geralmente ID do usuario, identificação do usuario), name,
-iat (Issued at, quando foi emitido o Token)
-
-**Informações colocadas no Payload são chamadas de CLAIMS**
-
-Claims do Token -->> Informações do Token
-
-Verify Signature -> Parte que não conseguimos descriptografar sem a chave que foi usada para assinar este Token
+todo: Próxima aula aprendendo a se autenticar com o JWT usando ele
