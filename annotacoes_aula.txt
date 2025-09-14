@@ -2,18 +2,34 @@
 https://whimsical.com/spring-security-PJ4GmmfGWU4NHrggmx3HZf
 https://docs.spring.io/spring-authorization-server/reference/configuration-model.html
 
-<------------ Aula 149 - Configurando Token JWK e JWT no Authorization Server ------------ >
+<------------ Aula 150 - Como obter Token JWT Utilzando Client Credentials (Grant Type) ------------ >
 
------------- RSA -  O que é? ------------
+Criamos no Postman Client Credentials, que autentica de uma API para a outra. Uma API acessando outra. Sem usuario
+digitando Login e Senha.
 
-Tipo chave Criptográfica utilizado em criptografia assimétrica. Método de criptografica onde possui duas chaves
-diferentes, pública e privada.
+Vimos a forma utilizando o Postman no qual ele deixa de fácil manuseio de ser feito nosso Client Credentials, mas agora
+farei as anotações de um Client Credentials de maneira manual e sem usar as indicações do próprio Postman.
 
-Componentes RSA:
-Chave pública -> criptografar os dados e pode ser compartilhada publicamente sem comprometer a segurança
+Criamos um segundo Folder do Client Credentials - Manual:
+-> Authorization:
+De 'OAuth 2.0' para 'No Auth'
 
-Chave privada -> É usada para descriptografar dados que foram criptografados pela chave PÚBLICA. Tem que ser mantida em
-segredo, só quem sabe a chave privada é o Servidor(Authorization Server), usada para descriptografar o Token e validar
-ele.
+-> Headers:
+Adicionamos a KEY 'Authorization' e Value será o 'Basic (...)' -> Base64 do clientId e clientSecret
 
-todo: Próxima aula aprendendo a se autenticar com o JWT usando ele
+-> Body:
+'None' para 'x-www-form-urlencoded' com KEY 'grant_type' e Value 'client_credentials' e outra KEY 'scope' e Value
+'GERENTE'
+
+Método HTTP 'POST' com url 'http://localhost:8080/oauth2/token' e por que está URL? Pois é a URL PADRÃO, independente do
+*Authorization Server* utilizado!!!
+
+Podemos verificar o Token no site 'https://www.jwt.io/'
+
+Pode-se utilizar este Token gerado por exemplo na pesquisa de livros:
+
+-> Authorization:
+'Bearer Token' para 'No Auth'
+
+-> Header:
+Criada a KEY 'Authorization' com Value 'Bearer (...)' com o código do Token
